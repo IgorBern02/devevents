@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Button } from "../components/Button";
-import { NavHeader } from "../components/header/NavHeader";
+import { Button } from "../ui/Button";
+import { NavHeader } from "./NavHeader";
 
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 

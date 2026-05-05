@@ -3,10 +3,56 @@
     {
       "id": 1,
       "title": "React Summit Brasil",
-      "description": "Evento sobre React",
+
       "date": "2026-06-10",
+      "hour": "19:00",
+      "day": "Quarta-feira",
       "city": "São Paulo",
-      "type": "presencial",
+      "type": "Presencial",
+      "link": "https://evento.com"
+    },
+    {
+      "id": 2,
+      "title": "Vue.js Global",
+
+      "date": "2026-07-15",
+      "hour": "20:00",
+      "day": "Quarta-feira",
+      "city": "Rio de Janeiro",
+      "type": "Online",
+      "link": "https://evento.com"
+    },
+    {
+      "id": 3,
+      "title": "Angular Connect",
+
+      "date": "2026-08-20",
+      "hour": "18:00",
+      "day": "Quinta-feira",
+      "city": "Belo Horizonte",
+      "type": "Presencial",
+      "link": "https://evento.com"
+    },
+    {
+      "id": 4,
+      "title": "Node.js Interactive",
+
+      "date": "2026-09-25",
+      "hour": "17:00",
+      "day": "Sexta-feira",
+      "city": "Curitiba",
+      "type": "Online",
+      "link": "https://evento.com"
+    },
+    {
+      "id": 5,
+      "title": "Python Brasil",
+
+      "date": "2026-10-30",
+      "hour": "19:30",
+      "day": "Sexta-feira",
+      "city": "Porto Alegre",
+      "type": "Presencial",
       "link": "https://evento.com"
     }
   ]

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -16,9 +17,12 @@
   --background-color-dark: #101828;
   --text-color: #1e2939;
   --text-color-dark: #f8fafc;
+
+  --font-inter: "Montserrat", sans-serif;
 }
 
 body {
   margin: 0;
   @apply bg-white text-black dark:bg-gray-900 dark:text-white;
+  font-family: var(--font-inter);
 }

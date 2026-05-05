@@ -4,7 +4,7 @@ import { IoCodeSlashOutline } from "react-icons/io5";
 
 export const Home = () => {
   return (
-    <div className="space-y-6 flex flex-col items-center justify-center w-full h-full p-2 ">
+    <div className="space-y-6 flex flex-col items-center justify-center w-full h-full p-2 mt-20">
       <section>
         <h1 className="text-5xl font-bold text-(--text-color) dark:text-(--text-color-dark) text-center text-wrap max-w-2xl ">
           Encontre eventos <span className="text-(--primary-color)">tech</span>{" "}
@@ -17,26 +17,26 @@ export const Home = () => {
         </p>
       </section>
 
-      <section className="w-1/3  rounded-lg flex items-center justify-around gap-4 text-md text-(--text-color) dark:text-(--text-color-dark)">
+      <section className="w-1/3  rounded-lg flex items-center justify-around gap-4 text-sm text-(--text-color) dark:text-(--text-color-dark)">
         <div
-          className="flex items-center gap-2 border border-gray-100 hover:border-(--primary-color) bg-gray-50 px-2 py-3 rounded-xl cursor-pointer hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 transition-all duration-300 ease-in-out 
-hover:-translate-y-1 hover:scale-105"
+          className="group flex items-center gap-2 border border-gray-100 hover:border-(--primary-color) bg-gray-50 px-2 py-3 rounded-xl  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 transition-all duration-300 ease-in-out 
+hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
         >
-          <CiHashtag className="mx-auto text-(--primary-color)" />
+          <CiHashtag className="text-(--primary-color) transition-transform duration-300 group-hover:rotate-12" />
           <p>Conferências</p>
         </div>
         <div
-          className="flex items-center gap-2 border border-gray-100 hover:border-(--primary-color) bg-gray-50 px-2 py-3 rounded-xl cursor-pointer hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 transition-all duration-300 ease-in-out 
-hover:-translate-y-1 hover:scale-105"
+          className="group flex items-center gap-2 border border-gray-100 hover:border-(--primary-color) bg-gray-50 px-2 py-3 rounded-xl  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 transition-all duration-300 ease-in-out 
+hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
         >
-          <IoCodeSlashOutline className="mx-auto text-(--primary-color)" />
+          <IoCodeSlashOutline className="text-(--primary-color) transition-transform duration-300 group-hover:rotate-12" />
           <p>Meetups</p>
         </div>
         <div
-          className="flex items-center gap-2 border border-gray-100 hover:border-(--primary-color) bg-gray-50 px-2 py-3 rounded-xl  cursor-pointer hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700  transition-all duration-300 ease-in-out 
-hover:-translate-y-1 hover:scale-105"
+          className="group flex items-center gap-2 border border-gray-100 hover:border-(--primary-color) bg-gray-50 px-2 py-3 rounded-xl   hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700  transition-all duration-300 ease-in-out 
+hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
         >
-          <PiBracketsCurlyLight className="mx-auto text-(--primary-color)" />
+          <PiBracketsCurlyLight className="text-(--primary-color) transition-transform duration-300 group-hover:rotate-12" />
           <p>Workshops</p>
         </div>
       </section>

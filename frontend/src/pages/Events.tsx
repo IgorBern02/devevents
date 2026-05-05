@@ -1,13 +1,8 @@
 import { useEffect, useState } from "react";
 import { api } from "../services/api";
 
-interface Event {
-  id: number;
-  title: string;
-  description: string;
-  date: string;
-  city: string;
-}
+import { Card } from "../components/ui/Card";
+import type { Event } from "../components/ui/Card";
 
 export const Events = () => {
   const [events, setEvents] = useState<Event[]>([]);
@@ -19,28 +14,25 @@ export const Events = () => {
   }, []);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-10 flex flex-col items-center w-full px-4 max-w-6xl mx-auto  mt-20">
       <section>
-        <h1 className="text-3xl font-bold">
-          Encontre eventos tech pelo Brasil
+        <h1 className="text-4xl font-bold text-(--text-color) dark:text-(--text-color-dark) text-center text-wrap max-w-2xl ">
+          Proximos eventos
         </h1>
+        <p className="text-lg text-gray-500  mt-4 rounded-lg p-4 max-w-2xl text-left ">
+          Descubra os eventos que estão por vir e saiba tudo sobre as últimas
+          tendências e novidades do mundo da tecnologia.
+        </p>
       </section>
 
-      <section>
-        <h2 className="text-xl font-semibold">Eventos em destaque</h2>
+      <section className="w-full">
+        <p className="text-md font-semibold text-(--primary-color) ">
+          Eventos em destaque
+        </p>
 
-        <ul className="space-y-4 bg-amber-300 dark:bg-amber-700 p-4 rounded-lg">
+        <ul className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
           {events.map((event) => (
-            <li
-              key={event.id}
-              className="border border-gray-300 dark:border-gray-600 rounded-lg p-4"
-            >
-              <h3 className="text-lg font-bold">{event.title}</h3>
-              <p>{event.description}</p>
-              <p>
-                {new Date(event.date).toLocaleDateString()} - {event.city}
-              </p>
-            </li>
+            <Card key={event.id} event={event} />
           ))}
         </ul>
       </section>

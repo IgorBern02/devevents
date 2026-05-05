@@ -1,0 +1,13 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "React Summit Brasil",
+      "description": "Evento sobre React",
+      "date": "2026-06-10",
+      "city": "São Paulo",
+      "type": "presencial",
+      "link": "https://evento.com"
+    }
+  ]
+}

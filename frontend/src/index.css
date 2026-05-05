@@ -2,6 +2,22 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* :root {
+  --primary-color: #4f46e5;
+  --secondary-color: #6b7280;
+  --background-color: #ffffff;
+  --text-color: #000000;
+} */
+
+:root {
+  --primary-color: #6366f1;
+  --secondary-color: #22c55e;
+  --background-color: #ffffff;
+  --background-color-dark: #101828;
+  --text-color: #1e2939;
+  --text-color-dark: #f8fafc;
+}
+
 body {
   margin: 0;
   @apply bg-white text-black dark:bg-gray-900 dark:text-white;

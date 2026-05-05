@@ -41,7 +41,7 @@ export const NavHeader = () => {
         <li key={item.name}>
           <Link
             to={item.link}
-            className="flex items-center gap-2 rounded-lg px-2 py-1 text-gray-500  hover:text-blue-500 dark:hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-gray-800 transition-colors"
+            className="flex items-center gap-2 rounded-lg px-2 py-1 text-gray-500  hover:text-(--primary-color)  hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 ease-in-out "
           >
             {item.icon}
             <p>{item.name}</p>

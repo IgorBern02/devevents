@@ -3,9 +3,22 @@ import { api } from "../services/api";
 
 import { Card } from "../components/ui/Card";
 import type { Event } from "../components/ui/Card";
+import { Filter } from "../components/ui/Filter";
 
 export const Events = () => {
   const [events, setEvents] = useState<Event[]>([]);
+
+  const [search, setSearch] = useState("");
+  const [type, setType] = useState("");
+  const [city, setCity] = useState("");
+
+  const filteredEvents = events.filter((event) => {
+    return (
+      event.title.toLowerCase().includes(search.toLowerCase()) &&
+      (type === "" || event.type === type) &&
+      (city === "" || event.city === city)
+    );
+  });
 
   useEffect(() => {
     api.get("/events").then((response) => {
@@ -25,13 +38,22 @@ export const Events = () => {
         </p>
       </section>
 
+      <Filter
+        search={search}
+        setSearch={setSearch}
+        type={type}
+        setType={setType}
+        city={city}
+        setCity={setCity}
+      />
+
       <section className="w-full">
         <p className="text-md font-semibold text-(--primary-color) ">
           Eventos em destaque
         </p>
 
         <ul className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
-          {events.map((event) => (
+          {filteredEvents.map((event) => (
             <Card key={event.id} event={event} />
           ))}
         </ul>

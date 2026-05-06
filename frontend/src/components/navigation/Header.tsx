@@ -25,16 +25,21 @@ export const Header = () => {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
   return (
-    <header className="w-screen h-16 flex items-center justify-between px-50 py-4 border-b border-gray-200 dark:border-gray-700">
-      <h1 className="text-xl font-bold ">DevEvents</h1>
+    <header className="w-full border-b border-gray-200 dark:border-gray-700">
+      <div className="max-w-7xl mx-auto h-16 flex items-center justify-between px-6">
+        <h1 className="text-xl font-bold">DevEvents</h1>
 
-      <nav>
-        <NavHeader />
-      </nav>
+        <nav>
+          <NavHeader />
+        </nav>
 
-      <Button onClick={toggleTheme}>
-        {theme === "dark" ? <IoSunnyOutline /> : <IoMoonOutline />}
-      </Button>
+        <Button
+          onClick={toggleTheme}
+          className="bg-gray-100 dark:bg-gray-800 shadow p-2 text-xl rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+        >
+          {theme === "dark" ? <IoSunnyOutline /> : <IoMoonOutline />}
+        </Button>
+      </div>
     </header>
   );
 };

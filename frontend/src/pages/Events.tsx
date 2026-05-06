@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../services/api";
-
 import { Card } from "../components/ui/Card";
-import type { Event } from "../components/ui/Card";
+import type { Event } from "../types/Event";
 import { Filter } from "../components/ui/Filter";
 
 export const Events = () => {

@@ -3,51 +3,62 @@
     {
       "id": 1,
       "title": "React Summit Brasil",
+      "description": "O React Summit Brasil é o maior evento de React da América Latina, reunindo desenvolvedores, especialistas e entusiastas para compartilhar conhecimento, discutir as últimas tendências e explorar as melhores práticas no ecossistema React. Com palestras inspiradoras, workshops práticos e networking de alto nível, o React Summit Brasil é a oportunidade perfeita para aprender, crescer e se conectar com a comunidade React no Brasil.",
       "date": "2026-06-10",
       "hour": "19:00",
       "day": "Quarta-feira",
       "city": "São Paulo",
       "type": "Presencial",
+      "location": "Av. Paulista, 1000 - São Paulo, SP",
       "link": "https://evento.com"
     },
     {
       "id": 2,
       "title": "Vue.js Global",
+      "description": "O Vue.js Global é um evento internacional dedicado ao framework Vue.js, reunindo desenvolvedores, especialistas e entusiastas de todo o mundo para compartilhar conhecimento, discutir as últimas tendências e explorar as melhores práticas no ecossistema Vue.js. Com palestras inspiradoras, workshops práticos e networking de alto nível, o Vue.js Global é a oportunidade perfeita para aprender, crescer e se conectar com a comunidade Vue.js globalmente.",
       "date": "2026-07-15",
       "hour": "20:00",
       "day": "Quarta-feira",
       "city": "Rio de Janeiro",
       "type": "Online",
+      "location": "Av. Rio de Janeiro, 1000 - Rio de Janeiro, RJ",
       "link": "https://evento.com"
     },
     {
       "id": 3,
       "title": "Angular Connect",
+
+      "description": "O Angular Connect é um evento internacional dedicado ao framework Angular, reunindo desenvolvedores, especialistas e entusiastas de todo o mundo para compartilhar conhecimento, discutir as últimas tendências e explorar as melhores práticas no ecossistema Angular. Com palestras inspiradoras, workshops práticos e networking de alto nível, o Angular Connect é a oportunidade perfeita para aprender, crescer e se conectar com a comunidade Angular globalmente.",
       "date": "2026-08-20",
       "hour": "18:00",
       "day": "Quinta-feira",
       "city": "Belo Horizonte",
       "type": "Presencial",
+      "location": "Av. Belo Horizonte, 1000 - Belo Horizonte, MG",
       "link": "https://evento.com"
     },
     {
       "id": 4,
       "title": "Node.js Interactive",
+      "description": "O Node.js Interactive é um evento internacional dedicado ao ambiente de execução Node.js, reunindo desenvolvedores, especialistas e entusiastas de todo o mundo para compartilhar conhecimento, discutir as últimas tendências e explorar as melhores práticas no ecossistema Node.js. Com palestras inspiradoras, workshops práticos e networking de alto nível, o Node.js Interactive é a oportunidade perfeita para aprender, crescer e se conectar com a comunidade Node.js globalmente.",
       "date": "2026-09-25",
       "hour": "17:00",
       "day": "Sexta-feira",
       "city": "Curitiba",
       "type": "Online",
+      "location": "Av. Curitiba, 1000 - Curitiba, PR",
       "link": "https://evento.com"
     },
     {
       "id": 5,
       "title": "Python Brasil",
+      "description": "O Python Brasil é o maior evento de Python do Brasil, reunindo desenvolvedores, especialistas e entusiastas para compartilhar conhecimento, discutir as últimas tendências e explorar as melhores práticas no ecossistema Python. Com palestras inspiradoras, workshops práticos e networking de alto nível, o Python Brasil é a oportunidade perfeita para aprender, crescer e se conectar com a comunidade Python no Brasil.",
       "date": "2026-10-30",
       "hour": "19:30",
       "day": "Sexta-feira",
       "city": "Porto Alegre",
       "type": "Presencial",
+      "location": "Av. Porto Alegre, 1000 - Porto Alegre, RS",
       "link": "https://evento.com"
     }
   ]

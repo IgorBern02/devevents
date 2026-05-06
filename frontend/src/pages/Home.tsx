@@ -1,6 +1,6 @@
-import { CiHashtag } from "react-icons/ci";
-import { PiBracketsCurlyLight } from "react-icons/pi";
-import { IoCodeSlashOutline } from "react-icons/io5";
+import { CiHashtag } from "../components/ui/icons";
+import { PiBracketsCurlyLight } from "../components/ui/icons";
+import { IoCodeSlashOutline } from "../components/ui/icons";
 
 export const Home = () => {
   return (

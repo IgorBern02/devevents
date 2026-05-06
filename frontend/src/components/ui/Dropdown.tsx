@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { FiChevronDown } from "react-icons/fi";
+import { FiChevronDown } from "./icons";
 
 interface DropdownProps {
   label: string;
@@ -46,7 +46,7 @@ export const Dropdown = ({
         {value === "" ? label : value}
 
         <FiChevronDown
-          className={`transition-all duration-300 text-gray-500 ${
+          className={`transition-all duration-300 text-(--text-color) dark:text-(--text-color-dark) ${
             open ? "rotate-180 text-(--primary-color)" : ""
           }`}
         />
@@ -75,11 +75,10 @@ export const Dropdown = ({
             cursor-pointer transition-colors
             ${
               option === value
-                ? "bg-purple-500 text-white"
-                : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-800"
+                ? "bg-(--primary-color) text-white"
+                : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
             }`}
           >
-            {/* 👉 mostra "Todos" visualmente */}
             {option === "" ? "Todos" : option}
           </div>
         ))}

@@ -5,7 +5,7 @@ import {
   type Dispatch,
   type SetStateAction,
 } from "react";
-import { CiSearch } from "react-icons/ci";
+import { CiSearch } from "./icons";
 import { Dropdown } from "./Dropdown";
 
 interface FilterProps {
@@ -65,7 +65,7 @@ export const Filter = ({
       ${open ? "w-56" : "w-11 cursor-pointer"}`}
         onClick={() => setOpen(true)}
       >
-        <CiSearch className="text-gray-400 text-lg shrink-0" />
+        <CiSearch className="text-(--text-color) dark:text-(--text-color-dark) text-lg shrink-0" />
 
         <input
           ref={inputRef}

@@ -1,5 +1,12 @@
-import { CiSearch, CiHashtag } from "react-icons/ci";
-import { FaRegClock } from "react-icons/fa";
+import { CiSearch, CiHashtag, CiShare2 } from "react-icons/ci";
+import {
+  FaRegClock,
+  FaWhatsapp,
+  FaInstagram,
+  FaLinkedin,
+  FaDiscord,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { BsCalendarDate } from "react-icons/bs";
 import { HiOutlineDesktopComputer } from "react-icons/hi";
 import { MdDateRange, MdArrowOutward } from "react-icons/md";
@@ -10,7 +17,13 @@ import { PiBracketsCurlyLight } from "react-icons/pi";
 export {
   CiSearch,
   CiHashtag,
+  CiShare2,
   FaRegClock,
+  FaWhatsapp,
+  FaInstagram,
+  FaLinkedin,
+  FaDiscord,
+  FaXTwitter,
   BsCalendarDate,
   HiOutlineDesktopComputer,
   MdDateRange,

@@ -54,15 +54,12 @@ export const Dropdown = ({
 
       {/* Dropdown */}
       <div
-        className={`absolute mt-2 w-full bg-white dark:bg-slate-900 
-        border border-gray-200 dark:border-slate-700 
-        rounded-xl shadow-xl overflow-hidden z-50
-        transition-all duration-200 origin-top
-        ${
-          open
-            ? "opacity-100 scale-100"
-            : "opacity-0 scale-95 pointer-events-none"
-        }`}
+        className={`absolute mt-2 min-w-45 bg-white dark:bg-slate-900 
+  border border-gray-200 dark:border-slate-700 
+  rounded-xl shadow-xl z-50
+  transition-all duration-200 origin-top
+  max-h-60 overflow-y-auto scroll-smooth
+  ${open ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}`}
       >
         {options.map((option) => (
           <div
@@ -72,7 +69,7 @@ export const Dropdown = ({
               setOpen(false);
             }}
             className={`px-4 py-3 text-sm font-medium
-            cursor-pointer transition-colors
+            cursor-pointer transition-colors 
             ${
               option === value
                 ? "bg-(--primary-color) text-white"

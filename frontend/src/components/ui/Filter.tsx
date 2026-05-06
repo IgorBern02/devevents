@@ -8,6 +8,7 @@ import {
 import { CiSearch } from "./icons";
 import { Dropdown } from "./Dropdown";
 
+import { brazilStates } from "../../constants/states";
 interface FilterProps {
   search: string;
   setSearch: Dispatch<SetStateAction<string>>;
@@ -88,7 +89,7 @@ export const Filter = ({
       <Dropdown
         label="Cidade"
         value={city}
-        options={["", "São Paulo", "Rio de Janeiro", "Brasília", "Salvador"]}
+        options={["", ...brazilStates]}
         onChange={setCity}
       />
     </div>

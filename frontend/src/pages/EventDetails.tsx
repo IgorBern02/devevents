@@ -1,104 +1,68 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { api } from "../services/api";
-import type { Event } from "../types/Event";
+import { BackButton } from "../components/ui/BackButton";
+import { EventInfoSection } from "../components/event/EventInfoSection";
+import { ShareSection } from "../components/event/ShareSection";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/Button";
-import {
-  BsCalendarDate,
-  FaRegClock,
-  MdArrowOutward,
-  FiChevronLeft,
-  IoCodeSlashOutline,
-  IoLocationSharp,
-} from "../components/ui/icons";
-import { InfoCard } from "../components/ui/InfoCard";
+import type { Event } from "../types/Event";
+import { useEffect, useState } from "react";
+import { api } from "../services/api";
+import { MdArrowOutward } from "../components/ui/icons";
 
 export const EventDetails = () => {
-  const { id } = useParams();
   const [event, setEvent] = useState<Event | null>(null);
 
-  const navigate = useNavigate();
+  const nav = useNavigate();
 
   const handleBack = () => {
-    navigate("/events");
+    nav("/events");
   };
 
   useEffect(() => {
-    api.get(`/events/${id}`).then((response) => {
-      setEvent(response.data);
-    });
-  }, [id]);
+    const fetchEvent = async () => {
+      const eventId = window.location.pathname.split("/").pop();
+      if (eventId) {
+        try {
+          const response = await api.get(`/events/${eventId}`);
+          setEvent(response.data);
+        } catch (error) {
+          console.error("Error fetching event details:", error);
+        }
+      }
+    };
+
+    fetchEvent();
+  }, []);
 
   if (!event) {
     return <div>Carregando...</div>;
   }
 
-  const infoCards = [
-    {
-      icon: <BsCalendarDate />,
-      label: "Data",
-      value: event.date,
-    },
-    {
-      icon: <FaRegClock />,
-      label: "Hora",
-      value: event.hour,
-    },
-    {
-      icon: <IoCodeSlashOutline />,
-      label: "Tipo",
-      value: event.type,
-    },
-    {
-      icon: <IoLocationSharp />,
-      label: "Cidade",
-      value: event.city,
-    },
-  ];
-
   return (
     <div className="space-y-10 flex flex-col items-center w-full px-4 max-w-4xl mx-auto mt-20">
-      <section className="w-full p-4 space-y-4 flex items-center ">
-        <Button
-          onClick={handleBack}
-          className="relative w-1/4 flex items-center justify-center border border-gray-200 hover:border-(--primary-color) py-2 text-sm cursor-pointer text-(--text-color) dark:text-(--text-color-dark) hover:text-(--primary-color) rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-        >
-          <FiChevronLeft className="absolute left-2" />
-          Voltar para os Eventos
-        </Button>
+      <section className="w-full p-4">
+        <BackButton onClick={handleBack} />
       </section>
 
       <section className="w-full shadow-lg rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800">
         <div className="w-full bg-amber-200 h-96"></div>
-        <div className="w-full p-4 space-y-4">
+
+        <div className="p-4 space-y-4">
           <h1 className="text-2xl font-bold">{event.title}</h1>
-          <p className="w-full wrap-break-word text-justify whitespace-normal text-(--text-color) dark:text-(--text-color-dark) tracking-wide leading-relaxed">
+
+          <p className="text-justify break-words whitespace-pre-line">
             {event.description}
           </p>
 
-          <div className="w-full grid grid-cols-2 gap-4 mt-6 p-4 ">
-            {infoCards.map((card, index) => (
-              <InfoCard
-                key={index}
-                icon={card.icon}
-                label={card.label}
-                value={card.value}
-              />
-            ))}
-          </div>
+          <EventInfoSection event={event} />
 
-          <div className="w-full">
-            <InfoCard
-              icon={<IoLocationSharp />}
-              label="Localização"
-              value={event.location}
-            />
-          </div>
-
-          <Button className="flex items-center justify-center gap-2 cursor-pointer bg-(--primary-color) hover:bg-(--primary-color-hover) text-white px-6 py-3 rounded-lg mt-6 transition-colors">
-            <p>Participar do Evento</p>
-            <MdArrowOutward className="text-xl" />
+          <Button className="flex items-center gap-2 bg-(--primary-color) text-white px-6 py-3 rounded-lg cursor-pointer hover:bg-(--primary-color-hover) transition-colors">
+            Participar do Evento
+            <MdArrowOutward className="text-lg" />
           </Button>
+
+          <hr />
+
+          <ShareSection />
         </div>
       </section>
     </div>

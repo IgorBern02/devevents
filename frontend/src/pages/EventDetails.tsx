@@ -6,6 +6,7 @@ import { Button } from "../components/ui/Button";
 import {
   BsCalendarDate,
   FaRegClock,
+  MdArrowOutward,
   FiChevronLeft,
   IoCodeSlashOutline,
   IoLocationSharp,
@@ -85,6 +86,19 @@ export const EventDetails = () => {
               />
             ))}
           </div>
+
+          <div className="w-full">
+            <InfoCard
+              icon={<IoLocationSharp />}
+              label="Localização"
+              value={event.location}
+            />
+          </div>
+
+          <Button className="flex items-center justify-center gap-2 cursor-pointer bg-(--primary-color) hover:bg-(--primary-color-hover) text-white px-6 py-3 rounded-lg mt-6 transition-colors">
+            <p>Participar do Evento</p>
+            <MdArrowOutward className="text-xl" />
+          </Button>
         </div>
       </section>
     </div>

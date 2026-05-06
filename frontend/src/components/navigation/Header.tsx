@@ -25,7 +25,7 @@ export const Header = () => {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
   return (
-    <header className="w-full border-b border-gray-200 dark:border-gray-700">
+    <header className="fixed bg-white dark:bg-gray-900 z-90 w-full border-b border-gray-200 dark:border-gray-700">
       <div className="max-w-7xl mx-auto h-16 flex items-center justify-between px-6">
         <h1 className="text-xl font-bold">DevEvents</h1>
 

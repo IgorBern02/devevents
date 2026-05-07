@@ -3,13 +3,11 @@ import { EventInfoSection } from "../components/event/EventInfoSection";
 import { ShareSection } from "../components/event/ShareSection";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/Button";
-import type { Event } from "../types/Event";
-import { useEffect, useState } from "react";
-import { api } from "../services/api";
 import { MdArrowOutward } from "../components/ui/icons";
+import { useEvents } from "../hooks/useEvents";
 
 export const EventDetails = () => {
-  const [event, setEvent] = useState<Event | null>(null);
+  const { event, loading } = useEvents();
 
   const nav = useNavigate();
 
@@ -17,21 +15,9 @@ export const EventDetails = () => {
     nav("/events");
   };
 
-  useEffect(() => {
-    const fetchEvent = async () => {
-      const eventId = window.location.pathname.split("/").pop();
-      if (eventId) {
-        try {
-          const response = await api.get(`/events/${eventId}`);
-          setEvent(response.data);
-        } catch (error) {
-          console.error("Error fetching event details:", error);
-        }
-      }
-    };
-
-    fetchEvent();
-  }, []);
+  if (loading) {
+    return <div>Carregando...</div>;
+  }
 
   if (!event) {
     return <div>Carregando...</div>;
@@ -49,7 +35,7 @@ export const EventDetails = () => {
         <div className="p-4 space-y-4">
           <h1 className="text-2xl font-bold">{event.title}</h1>
 
-          <p className="text-justify break-words whitespace-pre-line">
+          <p className="text-justify wrap-break-word whitespace-pre-line">
             {event.description}
           </p>
 

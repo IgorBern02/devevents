@@ -1,37 +1,37 @@
-import { useEffect, useState } from "react";
-import { api } from "../services/api";
+import { useState } from "react";
+
 import { Card } from "../components/ui/Card";
-import type { Event } from "../types/Event";
 import { Filter } from "../components/ui/Filter";
 
+import { useEvents } from "../hooks/useEvents";
+import { useFilteredEvents } from "../hooks/useFilteredEvents";
+
 export const Events = () => {
-  const [events, setEvents] = useState<Event[]>([]);
+  const { event, loading } = useEvents();
 
   const [search, setSearch] = useState("");
   const [type, setType] = useState("");
   const [city, setCity] = useState("");
 
-  const filteredEvents = events.filter((event) => {
-    return (
-      event.title.toLowerCase().includes(search.toLowerCase()) &&
-      (type === "" || event.type === type) &&
-      (city === "" || event.city === city)
-    );
+  const filteredEvents = useFilteredEvents({
+    events: event ? [event] : [],
+    search,
+    type,
+    city,
   });
 
-  useEffect(() => {
-    api.get("/events").then((response) => {
-      setEvents(response.data);
-    });
-  }, []);
+  if (loading) {
+    return <div>Carregando eventos...</div>;
+  }
 
   return (
-    <div className="space-y-10 flex flex-col items-center w-full px-4 max-w-6xl mx-auto  mt-20">
+    <div className="space-y-10 flex flex-col items-center w-full px-4 max-w-6xl mx-auto mt-20">
       <section>
-        <h1 className="text-4xl font-bold text-(--text-color) dark:text-(--text-color-dark) text-center text-wrap max-w-2xl ">
+        <h1 className="text-4xl font-bold text-(--text-color) dark:text-(--text-color-dark) text-center text-wrap max-w-2xl">
           Proximos eventos
         </h1>
-        <p className="text-lg text-gray-500  mt-4 rounded-lg p-4 max-w-2xl text-left ">
+
+        <p className="text-lg text-gray-500 mt-4 rounded-lg p-4 max-w-2xl text-left">
           Descubra os eventos que estão por vir e saiba tudo sobre as últimas
           tendências e novidades do mundo da tecnologia.
         </p>
@@ -47,7 +47,7 @@ export const Events = () => {
       />
 
       <section className="w-full">
-        <p className="text-md font-semibold text-(--primary-color) ">
+        <p className="text-md font-semibold text-(--primary-color)">
           Eventos em destaque
         </p>
 

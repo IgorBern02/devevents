@@ -1,33 +1,28 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { api } from "../services/api";
-import type { Event } from "../types/Event";
+import type { TechEvent } from "../types/TechEvent";
 
 export const useEvents = () => {
-  const [event, setEvent] = useState<Event | null>(null);
+  const [events, setEvents] = useState<TechEvent[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const { id } = useParams();
-
   useEffect(() => {
-    const fetchEvent = async () => {
+    const fetchEvents = async () => {
       try {
-        const response = await api.get(`/events/${id}`);
-        setEvent(response.data);
+        const response = await api.get("/events");
+        setEvents(response.data);
       } catch (error) {
-        console.error("Error fetching event details:", error);
+        console.error("Error fetching events:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    if (id) {
-      fetchEvent();
-    }
-  }, [id]);
+    fetchEvents();
+  }, []);
 
   return {
-    event,
+    events,
     loading,
   };
 };

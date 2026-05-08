@@ -7,14 +7,14 @@ import { useEvents } from "../hooks/useEvents";
 import { useFilteredEvents } from "../hooks/useFilteredEvents";
 
 export const Events = () => {
-  const { event, loading } = useEvents();
+  const { events, loading } = useEvents();
 
   const [search, setSearch] = useState("");
   const [type, setType] = useState("");
   const [city, setCity] = useState("");
 
   const filteredEvents = useFilteredEvents({
-    events: event ? [event] : [],
+    events,
     search,
     type,
     city,
@@ -28,10 +28,10 @@ export const Events = () => {
     <div className="space-y-10 flex flex-col items-center w-full px-4 max-w-6xl mx-auto mt-20">
       <section>
         <h1 className="text-4xl font-bold text-(--text-color) dark:text-(--text-color-dark) text-center text-wrap max-w-2xl">
-          Proximos eventos
+          Proximos <span className="text-(--primary-color)">eventos</span>
         </h1>
 
-        <p className="text-lg text-gray-500 mt-4 rounded-lg p-4 max-w-2xl text-left">
+        <p className="text-lg text-gray-500 mt-4 rounded-lg p-4 max-w-2xl text-justify wrap-break-word whitespace-pre-line">
           Descubra os eventos que estão por vir e saiba tudo sobre as últimas
           tendências e novidades do mundo da tecnologia.
         </p>

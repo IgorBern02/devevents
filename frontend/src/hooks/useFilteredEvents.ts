@@ -1,8 +1,8 @@
 import { useMemo } from "react";
-import type { Event } from "../types/Event";
+import type { TechEvent } from "../types/TechEvent";
 
 interface FilterProps {
-  events: Event[];
+  events: TechEvent[];
   search: string;
   type: string;
   city: string;

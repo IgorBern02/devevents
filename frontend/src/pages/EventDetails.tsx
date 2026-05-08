@@ -4,10 +4,10 @@ import { ShareSection } from "../components/event/ShareSection";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/Button";
 import { MdArrowOutward } from "../components/ui/icons";
-import { useEvents } from "../hooks/useEvents";
+import { useEvent } from "../hooks/useEvent";
 
 export const EventDetails = () => {
-  const { event, loading } = useEvents();
+  const { event, loading } = useEvent();
 
   const nav = useNavigate();
 

@@ -1,7 +1,6 @@
 import { AiOutlineHome } from "react-icons/ai";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { AiOutlineTeam } from "react-icons/ai";
-import { AiOutlinePicture } from "react-icons/ai";
 import { AiOutlineMail } from "react-icons/ai";
 
 import { Link } from "react-router-dom";
@@ -25,7 +24,7 @@ const navHeaderItems = [
   {
     name: "Galeria",
     link: "/gallery",
-    icon: <AiOutlinePicture />,
+    icon: <AiOutlineTeam />,
   },
   {
     name: "Contato",

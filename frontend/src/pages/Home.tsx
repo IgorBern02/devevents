@@ -10,7 +10,7 @@ export const Home = () => {
           Encontre eventos <span className="text-(--primary-color)">tech</span>{" "}
           pelo Brasil
         </h1>
-        <p className="text-lg text-gray-500  mt-4 rounded-lg p-4 max-w-2xl text-left ">
+        <p className="text-lg text-gray-500  mt-4 rounded-lg p-4 max-w-2xl text-justify wrap-break-word whitespace-pre-line78 ">
           Descubra eventos de tecnologia em todo o Brasil e conecte-se com a
           comunidade tech local. Encontre conferências, meetups e workshops
           perto de você e fique por dentro das últimas tendências do setor.

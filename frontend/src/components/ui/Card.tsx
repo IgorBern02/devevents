@@ -4,10 +4,10 @@ import { BsCalendarDate } from "./icons";
 import { HiOutlineDesktopComputer } from "./icons";
 import { IoLocationSharp } from "./icons";
 import { Link } from "react-router-dom";
-import type { Event } from "../../types/Event";
+import type { TechEvent } from "../../types/TechEvent";
 import { Button } from "./Button";
 interface CardProps {
-  event: Event;
+  event: TechEvent;
 }
 
 export const Card = ({ event }: CardProps) => {

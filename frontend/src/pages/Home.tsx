@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { Button } from "../components/ui/Button";
 import { CiHashtag } from "../components/ui/icons";
 import { PiBracketsCurlyLight } from "../components/ui/icons";
 import { IoCodeSlashOutline } from "../components/ui/icons";
@@ -39,6 +41,10 @@ hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
           <PiBracketsCurlyLight className="text-(--primary-color) transition-transform duration-300 group-hover:rotate-12" />
           <p>Workshops</p>
         </div>
+
+        <Link to={"/submit-event"}>
+          <Button className="p-2 border bg-red-300">formulario</Button>
+        </Link>
       </section>
     </div>
   );

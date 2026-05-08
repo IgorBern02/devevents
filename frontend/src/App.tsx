@@ -5,6 +5,7 @@ import { Events } from "./pages/Events";
 import { EventDetails } from "./pages/EventDetails";
 import { About } from "./pages/About";
 import { Gallery } from "./pages/Gallery";
+import { SubmitEvent } from "./pages/SubmitEvent";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/submit-event" element={<SubmitEvent />} />
       </Routes>
     </MainLayout>
   );

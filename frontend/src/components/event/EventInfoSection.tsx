@@ -4,7 +4,7 @@ import {
   IoCodeSlashOutline,
   IoLocationSharp,
 } from "../ui/icons";
-import { InfoCard } from "../ui/InfoCard";
+import { InfoCard } from "../ui//events/InfoCard";
 import type { TechEvent } from "../../types/TechEvent";
 
 interface Props {

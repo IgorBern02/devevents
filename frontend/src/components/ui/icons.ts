@@ -5,8 +5,13 @@ import {
   FaInstagram,
   FaLinkedin,
   FaDiscord,
+  FaBullseye,
+  FaEye,
+  FaLightbulb,
+  FaChartLine,
+  FaHandshake,
 } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaXTwitter, FaBook } from "react-icons/fa6";
 import { BsCalendarDate } from "react-icons/bs";
 import { HiOutlineDesktopComputer } from "react-icons/hi";
 import { MdDateRange, MdArrowOutward } from "react-icons/md";
@@ -23,7 +28,13 @@ export {
   FaInstagram,
   FaLinkedin,
   FaDiscord,
+  FaBullseye,
+  FaEye,
+  FaLightbulb,
+  FaChartLine,
+  FaHandshake,
   FaXTwitter,
+  FaBook,
   BsCalendarDate,
   HiOutlineDesktopComputer,
   MdDateRange,

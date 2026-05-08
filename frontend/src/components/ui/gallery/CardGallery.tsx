@@ -3,7 +3,7 @@ import { BsCalendarDate } from "react-icons/bs";
 
 export const CardGallery = () => {
   return (
-    <div className="group w-full h-full bg-gray-100 hover:bg-white hover:shadow-lg rounded-lg cursor-pointer overflow-hidden transition duration-300 ease-in-out">
+    <div className="group w-full h-full bg-gray-100 dark:bg-gray-800 hover:bg-white dark:hover:bg-gray-700 hover:shadow-lg rounded-lg cursor-pointer overflow-hidden transition duration-300 ease-in-out">
       <section className="w-full h-48 flex items-center justify-center p-4 bg-red-400 rounded-t-lg group-hover:scale-105 transition duration-300 ease-in-out">
         <p>img</p>
       </section>

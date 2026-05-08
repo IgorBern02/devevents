@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
-import { Button } from "./Button";
+import { Button } from "../Button";
 
-import { IoLocationSharp } from "./icons";
+import { IoLocationSharp } from "../icons";
 
 interface InfoCardProps {
   icon: ReactNode;

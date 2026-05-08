@@ -1,4 +1,4 @@
-import { CardGallery } from "../components/ui/CardGallery";
+import { CardGallery } from "../components/ui/gallery/CardGallery";
 
 export const Gallery = () => {
   return (

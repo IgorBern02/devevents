@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Card } from "../components/ui/Card";
+import { Card } from "../components/ui/events/Card";
 import { Filter } from "../components/ui/Filter";
 
 import { useEvents } from "../hooks/useEvents";

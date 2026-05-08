@@ -1,11 +1,11 @@
-import { MdDateRange } from "./icons";
-import { FaRegClock } from "./icons";
-import { BsCalendarDate } from "./icons";
-import { HiOutlineDesktopComputer } from "./icons";
-import { IoLocationSharp } from "./icons";
+import { MdDateRange } from "../icons";
+import { FaRegClock } from "../icons";
+import { BsCalendarDate } from "../icons";
+import { HiOutlineDesktopComputer } from "../icons";
+import { IoLocationSharp } from "../icons";
 import { Link } from "react-router-dom";
-import type { TechEvent } from "../../types/TechEvent";
-import { Button } from "./Button";
+import type { TechEvent } from "../../../types/TechEvent";
+import { Button } from "../Button";
 interface CardProps {
   event: TechEvent;
 }

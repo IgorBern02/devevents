@@ -53,7 +53,7 @@ export const Events = () => {
 
         <ul className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
           {filteredEvents.map((event) => (
-            <Card key={event.id} event={event} />
+            <Card key={event._id} event={event} />
           ))}
         </ul>
       </section>

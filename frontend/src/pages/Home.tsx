@@ -45,6 +45,10 @@ hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
         <Link to={"/submit-event"}>
           <Button className="p-2 border bg-red-300">formulario</Button>
         </Link>
+
+        <Link to={"/admin/events"}>
+          <Button className="p-2 border bg-red-300">admin</Button>
+        </Link>
       </section>
     </div>
   );

@@ -12,7 +12,7 @@ interface CardProps {
 
 export const Card = ({ event }: CardProps) => {
   return (
-    <Link to={`/events/${event.id}`} className="w-full ">
+    <Link to={`/events/${event._id}`} className="w-full ">
       <li
         className="w-full bg-white dark:bg-slate-900 
       border border-gray-200 dark:border-slate-700 

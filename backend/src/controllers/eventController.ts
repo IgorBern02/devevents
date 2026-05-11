@@ -3,7 +3,9 @@ import { Event } from "../models/eventModel";
 
 export const getEvents = async (req: Request, res: Response) => {
   try {
-    const events = await Event.find();
+    const events = await Event.find({
+      approved: true,
+    });
     res.json(events);
   } catch (error) {
     res.status(500).json({ message: "Error fetching events" });
@@ -19,6 +21,44 @@ export const getEventById = async (req: Request, res: Response) => {
     res.json(event);
   } catch (error) {
     res.status(500).json({ message: "Error fetching event" });
+  }
+};
+
+export const getPendingEvents = async (req: Request, res: Response) => {
+  console.log("ROTA PENDING CHAMADA");
+
+  try {
+    const events = await Event.find({
+      approved: { $ne: true },
+    });
+
+    res.json(events);
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({ message: "Error fetching pending events" });
+  }
+};
+
+export const approveEvent = async (req: Request, res: Response) => {
+  try {
+    const event = await Event.findByIdAndUpdate(
+      req.params.id,
+      {
+        approved: true,
+      },
+      {
+        new: true,
+      },
+    );
+
+    res.json(event);
+  } catch (error) {
+    console.log(error);
+
+    res.status(400).json({
+      message: "Error approving event",
+    });
   }
 };
 

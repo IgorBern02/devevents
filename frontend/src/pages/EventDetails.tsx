@@ -26,7 +26,7 @@ export const EventDetails = () => {
   return (
     <div className="space-y-10 flex flex-col items-center w-full px-4 max-w-4xl mx-auto mt-20">
       <section className="w-full p-4">
-        <BackButton onClick={handleBack} />
+        <BackButton text="Voltar para os Eventos" onClick={handleBack} />
       </section>
 
       <section className="w-full shadow-lg rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800">

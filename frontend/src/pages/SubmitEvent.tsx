@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { eventSchema, type EventFormData } from "../schemas/eventSchema";
 
 import { api } from "../services/api";
+import { BackButton } from "../components/ui/BackButton";
+import { useNavigate } from "react-router-dom";
 
 export const SubmitEvent = () => {
   const {
@@ -31,109 +32,163 @@ export const SubmitEvent = () => {
     }
   };
 
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate("/");
+  };
+
   return (
-    <div className="max-w-3xl mx-auto px-4 mt-20">
-      <h1 className="text-4xl font-bold mb-8">Enviar Evento</h1>
+    <div className="min-h-screen  py-20 px-4">
+      <div className="max-w-4xl mx-auto">
+        <section className="text-center mb-12">
+          <span className="bg-violet-500/20 text-violet-400 border border-violet-500/30 px-4 py-2 rounded-full text-sm font-medium">
+            Compartilhe com a comunidade
+          </span>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <div>
-          <label className="block mb-2 font-medium">Título</label>
+          <h1 className="text-5xl font-extrabold text-(--text-color) dark:text-(--text-color-dark) mt-6 leading-tight">
+            Envie seu
+            <span className="text-violet-500"> Evento Tech</span>
+          </h1>
 
-          <input
-            type="text"
-            {...register("title")}
-            className="w-full border rounded-lg p-3"
-          />
+          <p className="text-gray-400 text-lg mt-5 max-w-2xl mx-auto leading-relaxed">
+            Publique workshops, meetups, hackathons e conferências para que mais
+            pessoas possam descobrir e participar.
+          </p>
+        </section>
 
-          {errors.title && (
-            <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>
-          )}
-        </div>
+        <section className="w-full p-4">
+          <BackButton text="Voltar para o inicio" onClick={handleBack} />
+        </section>
 
-        <div>
-          <label className="block mb-2 font-medium">Descrição</label>
-
-          <textarea
-            {...register("description")}
-            className="w-full border rounded-lg p-3 h-40"
-          />
-
-          {errors.description && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.description.message}
-            </p>
-          )}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl space-y-8"
+        >
           <div>
-            <label className="block mb-2 font-medium">Data</label>
-
-            <input
-              type="date"
-              {...register("date")}
-              className="w-full border rounded-lg p-3"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-2 font-medium">Hora</label>
-
-            <input
-              type="time"
-              {...register("hour")}
-              className="w-full border rounded-lg p-3"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-2 rounded-lg p-3">Dia</label>
+            <label className="block mb-2 text-sm font-medium text-(--text-color) dark:text-(--text-color-dark)">
+              Título do Evento
+            </label>
 
             <input
               type="text"
-              {...register("day")}
-              className="w-full border rounded-lg p-3"
+              placeholder="Ex: Front-End Summit 2026"
+              {...register("title")}
+              className="w-full border border-slate-700 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 outline-none transition-all rounded-xl p-4 text-(--text-color) dark:text-(--text-color-dark) placeholder:text-gray-500"
             />
+
+            {errors.title && (
+              <p className="text-red-400 text-sm mt-2">
+                {errors.title.message}
+              </p>
+            )}
           </div>
-        </div>
 
-        <div>
-          <label className="block mb-2 font-medium">Tipo</label>
+          <div>
+            <label className="block mb-2 text-sm font-medium text-(--text-color) dark:text-(--text-color-dark)">
+              Descrição
+            </label>
 
-          <input
-            type="text"
-            {...register("type")}
-            className="w-full border rounded-lg p-3"
-          />
-        </div>
+            <textarea
+              placeholder="Descreva o evento..."
+              {...register("description")}
+              className="w-full h-40 resize-none border border-slate-700 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 outline-none transition-all rounded-xl p-4 text-(--text-color) dark:text-(--text-color-dark) placeholder:text-gray-500"
+            />
 
-        <div>
-          <label className="block mb-2 font-medium">Cidade</label>
+            {errors.description && (
+              <p className="text-red-400 text-sm mt-2">
+                {errors.description.message}
+              </p>
+            )}
+          </div>
 
-          <input
-            type="text"
-            {...register("city")}
-            className="w-full border rounded-lg p-3"
-          />
-        </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block mb-2 text-sm font-medium text-(--text-color) dark:text-(--text-color-dark)">
+                Data
+              </label>
 
-        <div>
-          <label className="block mb-2 font-medium">Localização</label>
+              <input
+                type="date"
+                {...register("date")}
+                className="w-full border border-slate-700 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 outline-none transition-all rounded-xl p-4  text-(--text-color) dark:text-(--text-color-dark) placeholder:text-gray-500"
+              />
+            </div>
 
-          <input
-            type="text"
-            {...register("location")}
-            className="w-full border rounded-lg p-3"
-          />
-        </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium text-(--text-color) dark:text-(--text-color-dark)">
+                Hora
+              </label>
 
-        <button
-          disabled={isSubmitting}
-          className="bg-(--primary-color) text-white px-6 py-3 rounded-lg"
-        >
-          {isSubmitting ? "Enviando..." : "Enviar Evento"}
-        </button>
-      </form>
+              <input
+                type="time"
+                {...register("hour")}
+                className="w-full border border-slate-700 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 outline-none transition-all rounded-xl p-4  text-(--text-color) dark:text-(--text-color-dark) placeholder:text-gray-500"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-2 text-sm font-medium text-(--text-color) dark:text-(--text-color-dark)">
+                Dia da Semana
+              </label>
+
+              <input
+                type="text"
+                placeholder="Ex: Sábado"
+                {...register("day")}
+                className="w-full border border-slate-700 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 outline-none transition-all rounded-xl p-4  text-(--text-color) dark:text-(--text-color-dark) placeholder:text-gray-500"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-2 text-sm font-medium text-(--text-color) dark:text-(--text-color-dark)">
+                Tipo do Evento
+              </label>
+
+              <input
+                type="text"
+                placeholder="Ex: Online / Presencial"
+                {...register("type")}
+                className="w-full border border-slate-700 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 outline-none transition-all rounded-xl p-4  text-(--text-color) dark:text-(--text-color-dark) placeholder:text-gray-500"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-2 text-sm font-medium text-(--text-color) dark:text-(--text-color-dark)">
+                Cidade
+              </label>
+
+              <input
+                type="text"
+                placeholder="Ex: São Paulo"
+                {...register("city")}
+                className="w-full border border-slate-700 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 outline-none transition-all rounded-xl p-4  text-(--text-color) dark:text-(--text-color-dark) placeholder:text-gray-500"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-2 text-sm font-medium text-(--text-color) dark:text-(--text-color-dark)">
+                Localização
+              </label>
+
+              <input
+                type="text"
+                placeholder="Ex: Expo Center Norte"
+                {...register("location")}
+                className="w-full border border-slate-700 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 outline-none transition-all rounded-xl p-4  text-(--text-color) dark:text-(--text-color-dark) placeholder:text-gray-500"
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-violet-600 hover:bg-violet-500 transition-all duration-300 text-white font-semibold py-4 rounded-xl shadow-lg shadow-violet-500/20 disabled:opacity-70 cursor-pointer"
+          >
+            {isSubmitting ? "Enviando evento..." : "Publicar Evento"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

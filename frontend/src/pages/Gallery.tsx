@@ -14,9 +14,9 @@ export const Gallery = () => {
         </p>
       </section>
       <section className="w-full">
-        <p className="text-md font-semibold text-(--primary-color)">
+        <span className="bg-violet-500/20 text-(--primary-color) dark:text-violet-400 border border-violet-500/30 px-4 py-2 rounded-full text-sm font-medium">
           Fotos em destaque
-        </p>
+        </span>
         <ul className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
           <CardGallery />
           <CardGallery />

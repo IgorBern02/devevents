@@ -1,28 +1,26 @@
 import { useEffect, useState } from "react";
-import type { TechEvent } from "../types/TechEvent";
 import { eventsService } from "../services/eventsService";
+import type { TechEvent } from "../types/TechEvent";
 
-export const useEvents = () => {
+export const usePendingEvents = (): [TechEvent[], boolean] => {
   const [events, setEvents] = useState<TechEvent[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchEvents = async () => {
+    const fetchPendingEvent = async () => {
       try {
-        const data = await eventsService.getEvents();
+        const data = await eventsService.getPendingEvents();
+
         setEvents(data);
       } catch (error) {
-        console.error("Error fetching events:", error);
+        console.log(error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchEvents();
+    fetchPendingEvent();
   }, []);
 
-  return {
-    events,
-    loading,
-  };
+  return [events, loading];
 };

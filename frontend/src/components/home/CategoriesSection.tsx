@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { Button } from "../ui/Button";
 import { CiHashtag } from "../ui/icons";
 import { PiBracketsCurlyLight } from "../ui/icons";
 import { IoCodeSlashOutline } from "../ui/icons";
@@ -12,6 +14,10 @@ export const CategoriesSection = () => {
       <CategoryCard icon={<IoCodeSlashOutline />} title="Meetups" />
 
       <CategoryCard icon={<PiBracketsCurlyLight />} title="Workshops" />
+
+      <Link to="/admin/events">
+        <Button>adm</Button>
+      </Link>
     </section>
   );
 };

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { api } from "../services/api";
+
 import type { TechEvent } from "../types/TechEvent";
+import { eventsService } from "../services/eventsService";
 
 export const useEvent = () => {
   const [event, setEvent] = useState<TechEvent | null>(null);
@@ -11,8 +12,8 @@ export const useEvent = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await api.get(`/events/${id}`);
-        setEvent(response.data);
+        const data = await eventsService.getEventById(id as string);
+        setEvent(data);
       } catch (error) {
         console.error("Error fetching event:", error);
       } finally {

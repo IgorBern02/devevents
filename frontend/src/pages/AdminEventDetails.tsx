@@ -1,59 +1,27 @@
-import { useEffect, useState } from "react";
-
 import { useParams } from "react-router-dom";
-
-import { api } from "../services/api";
-
-import type { TechEvent } from "../types/TechEvent";
 
 import { Button } from "../components/ui/Button";
 import { BackButton } from "../components/ui/BackButton";
 
 import { useGoBack } from "../hooks/useGoBack";
+import { useAdminEventActions } from "../hooks/useAdminEventActions";
+import { useEvent } from "../hooks/useEvent";
 
 export const AdminEventDetails = () => {
-  const [event, setEvent] = useState<TechEvent | null>(null);
+  const { event, loading } = useEvent();
 
   const { id } = useParams();
 
   const { goBack } = useGoBack();
 
-  useEffect(() => {
-    const fetchEvent = async () => {
-      try {
-        const response = await api.get(`/events/${id}`);
-
-        setEvent(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchEvent();
-  }, [id]);
-
-  const handleApprove = async () => {
-    try {
-      await api.patch(`/events/${id}/approve`);
-
-      goBack("/admin/events");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleDelete = async () => {
-    try {
-      await api.delete(`/events/${id}`);
-
-      goBack("/admin/events");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { approveEvent, deleteEvent } = useAdminEventActions();
 
   if (!event) {
     return <div className="mt-20 text-center">Carregando...</div>;
+  }
+
+  if (loading) {
+    return <div>Carregando...</div>;
   }
 
   return (
@@ -95,14 +63,18 @@ export const AdminEventDetails = () => {
 
         <div className="mt-10 flex gap-4">
           <Button
-            onClick={handleApprove}
+            onClick={async () => {
+              await approveEvent(id!);
+            }}
             className="bg-green-600 hover:bg-green-700 duration-200 ease-in-out text-white px-4 py-2 rounded-lg cursor-pointer"
           >
             Aprovar Evento
           </Button>
 
           <Button
-            onClick={handleDelete}
+            onClick={async () => {
+              await deleteEvent(id!);
+            }}
             className="bg-red-600 hover:bg-red-700 duration-200 ease-in-out text-white px-4 py-2 rounded-lg cursor-pointer"
           >
             Excluir Evento

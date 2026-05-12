@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { api } from "../services/api";
 
@@ -9,12 +9,14 @@ import type { TechEvent } from "../types/TechEvent";
 import { Button } from "../components/ui/Button";
 import { BackButton } from "../components/ui/BackButton";
 
+import { useGoBack } from "../hooks/useGoBack";
+
 export const AdminEventDetails = () => {
   const [event, setEvent] = useState<TechEvent | null>(null);
 
   const { id } = useParams();
 
-  const navigate = useNavigate();
+  const { goBack } = useGoBack();
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -34,7 +36,7 @@ export const AdminEventDetails = () => {
     try {
       await api.patch(`/events/${id}/approve`);
 
-      navigate("/admin/events");
+      goBack("/admin/events");
     } catch (error) {
       console.log(error);
     }
@@ -44,7 +46,7 @@ export const AdminEventDetails = () => {
     try {
       await api.delete(`/events/${id}`);
 
-      navigate("/admin/events");
+      goBack("/admin/events");
     } catch (error) {
       console.log(error);
     }
@@ -54,14 +56,13 @@ export const AdminEventDetails = () => {
     return <div className="mt-20 text-center">Carregando...</div>;
   }
 
-  const handleBack = () => {
-    navigate("/admin/events");
-  };
-
   return (
     <div className="max-w-4xl mx-auto px-4 mt-20">
       <section className="w-full p-4">
-        <BackButton text="Voltar para o painel de admin" onClick={handleBack} />
+        <BackButton
+          text="Voltar para o painel de admin"
+          onClick={() => goBack("/admin/events")}
+        />
       </section>
       <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-sm">
         <h1 className="text-4xl font-bold">{event.title}</h1>

@@ -4,15 +4,17 @@ import { api } from "../services/api";
 
 import type { TechEvent } from "../types/TechEvent";
 import { Button } from "../components/ui/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BackButton } from "../components/ui/BackButton";
+
+import { useGoBack } from "../hooks/useGoBack";
 
 export const AdminEvents = () => {
   const [events, setEvents] = useState<TechEvent[]>([]);
 
   const [loading, setLoading] = useState(true);
 
-  const navigate = useNavigate();
+  const { goBack } = useGoBack();
 
   const fetchPendingEvents = async () => {
     try {
@@ -58,10 +60,6 @@ export const AdminEvents = () => {
     return <div className="mt-20 text-center">Carregando...</div>;
   }
 
-  const handleBack = () => {
-    navigate("/");
-  };
-
   return (
     <div className="max-w-6xl mx-auto px-4 mt-20 flex flex-col items-center">
       <h1 className="text-4xl font-bold text-(--text-color) dark:text-(--text-color-dark) text-center text-wrap max-w-2xl">
@@ -69,7 +67,7 @@ export const AdminEvents = () => {
       </h1>
 
       <section className="w-full p-4">
-        <BackButton text="Voltar para o inicio" onClick={handleBack} />
+        <BackButton text="Voltar para o inicio" onClick={() => goBack("/")} />
       </section>
 
       <div className="space-y-6 p-2 w-full mt-10">

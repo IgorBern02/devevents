@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "react-router-dom";
 
 import { eventSchema, type EventFormData } from "../schemas/eventSchema";
 
@@ -12,6 +11,8 @@ import { FormInput } from "../components/forms/FormInput";
 import { FormTextarea } from "../components/forms/FormTextarea";
 import { SubmitEventHeader } from "../components/forms/SubmitEventHeader";
 
+import { useGoBack } from "../hooks/useGoBack";
+
 export const SubmitEvent = () => {
   const {
     register,
@@ -22,11 +23,7 @@ export const SubmitEvent = () => {
     resolver: zodResolver(eventSchema),
   });
 
-  const navigate = useNavigate();
-
-  const handleBack = () => {
-    navigate("/");
-  };
+  const { goBack } = useGoBack();
 
   const onSubmit = async (data: EventFormData) => {
     try {
@@ -48,7 +45,7 @@ export const SubmitEvent = () => {
         <SubmitEventHeader />
 
         <section className="w-full p-4">
-          <BackButton text="Voltar para o início" onClick={handleBack} />
+          <BackButton text="Voltar para o início" onClick={() => goBack("/")} />
         </section>
 
         <form

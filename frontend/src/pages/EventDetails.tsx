@@ -1,19 +1,15 @@
 import { BackButton } from "../components/ui/BackButton";
 import { EventInfoSection } from "../components/event/EventInfoSection";
 import { ShareSection } from "../components/event/ShareSection";
-import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/Button";
 import { MdArrowOutward } from "../components/ui/icons";
 import { useEvent } from "../hooks/useEvent";
+import { useGoBack } from "../hooks/useGoBack";
 
 export const EventDetails = () => {
   const { event, loading } = useEvent();
 
-  const nav = useNavigate();
-
-  const handleBack = () => {
-    nav("/events");
-  };
+  const { goBack } = useGoBack();
 
   if (loading) {
     return <div>Carregando...</div>;
@@ -26,7 +22,10 @@ export const EventDetails = () => {
   return (
     <div className="space-y-10 flex flex-col items-center w-full px-4 max-w-4xl mx-auto mt-20">
       <section className="w-full p-4">
-        <BackButton text="Voltar para os Eventos" onClick={handleBack} />
+        <BackButton
+          text="Voltar para os Eventos"
+          onClick={() => goBack("/events")}
+        />
       </section>
 
       <section className="w-full shadow-lg rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800">

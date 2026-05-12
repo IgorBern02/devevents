@@ -19,7 +19,6 @@ export const PublishEventSection = () => {
           items-center
         "
       >
-        {/* IMAGEM */}
         <div className="flex items-center justify-center p-10 relative">
           <div className="absolute w-72 h-72 bg-purple-500/20 blur-3xl rounded-full" />
 
@@ -37,21 +36,37 @@ export const PublishEventSection = () => {
           />
         </div>
 
-        {/* TEXTO */}
         <div className="p-10 md:p-16">
           <span className="bg-purple-500/20 text-purple-400 px-4 py-2 rounded-full text-sm font-medium border border-purple-500/30">
             Compartilhe conhecimento
           </span>
-
           <h2 className="text-4xl md:text-5xl font-bold text-white mt-6 leading-tight">
             Publique seu próximo
             <span className="text-purple-500"> evento tech</span>
           </h2>
-
           <p className="text-gray-400 text-lg mt-6 leading-relaxed">
             Ajude desenvolvedores a encontrarem meetups, workshops e
             conferências incríveis pelo Brasil.
           </p>
+
+          <div className="mt-8 space-y-4">
+            {" "}
+            <div className="flex items-center gap-3 text-gray-300">
+              {" "}
+              <div className="w-2 h-2 bg-purple-500 rounded-full" />{" "}
+              <p>Divulgação para toda comunidade</p>{" "}
+            </div>{" "}
+            <div className="flex items-center gap-3 text-gray-300">
+              {" "}
+              <div className="w-2 h-2 bg-purple-500 rounded-full" />{" "}
+              <p>Eventos presenciais e online</p>{" "}
+            </div>{" "}
+            <div className="flex items-center gap-3 text-gray-300">
+              {" "}
+              <div className="w-2 h-2 bg-purple-500 rounded-full" />{" "}
+              <p>Mais alcance para seu meetup</p>{" "}
+            </div>{" "}
+          </div>
 
           <Link to={"/submit-event"}>
             <Button
@@ -70,6 +85,7 @@ export const PublishEventSection = () => {
                 hover:scale-105
                 transition-all
                 duration-300
+                cursor-pointer
               "
             >
               Publicar Evento

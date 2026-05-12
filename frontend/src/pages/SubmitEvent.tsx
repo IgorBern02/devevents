@@ -67,6 +67,15 @@ export const SubmitEvent = () => {
             error={errors.title}
           />
 
+          <FormInput
+            label="Responsável pelo Evento"
+            placeholder="Ex: TLL Tecnologias"
+            register={register("responsible")}
+            error={errors.title}
+          />
+
+          <FormInput label="image" type="image" register={register("image")} />
+
           <FormTextarea
             label="Descrição"
             placeholder="Descreva o evento..."

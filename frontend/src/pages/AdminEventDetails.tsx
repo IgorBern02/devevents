@@ -7,6 +7,8 @@ import { useGoBack } from "../hooks/useGoBack";
 import { useAdminEventActions } from "../hooks/useAdminEventActions";
 import { useEvent } from "../hooks/useEvent";
 
+import { formatDate } from "../utils/formatDate";
+
 export const AdminEventDetails = () => {
   const { event, loading } = useEvent();
 
@@ -49,7 +51,7 @@ export const AdminEventDetails = () => {
           </p>
 
           <p>
-            <strong>Data:</strong> {event.date}
+            <strong>Data:</strong> {formatDate(event.date)}
           </p>
 
           <p>

@@ -64,10 +64,9 @@ export const approveEvent = async (req: Request, res: Response) => {
 
 export const createEvent = async (req: Request, res: Response) => {
   try {
-    const { title, description, date, hour, day, type, city, location } =
-      req.body;
-    const event = new Event({
+    const {
       title,
+      responsible,
       description,
       date,
       hour,
@@ -75,6 +74,19 @@ export const createEvent = async (req: Request, res: Response) => {
       type,
       city,
       location,
+      link,
+    } = req.body;
+    const event = new Event({
+      title,
+      responsible,
+      description,
+      date,
+      hour,
+      day,
+      type,
+      city,
+      location,
+      link,
     });
     await event.save();
     res.status(201).json(event);

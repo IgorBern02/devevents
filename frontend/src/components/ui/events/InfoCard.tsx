@@ -6,7 +6,7 @@ import { IoLocationSharp } from "../icons";
 interface InfoCardProps {
   icon: ReactNode;
   label: string;
-  value: string;
+  value?: string;
 }
 
 export const InfoCard = ({ icon, label, value }: InfoCardProps) => {
@@ -18,7 +18,7 @@ export const InfoCard = ({ icon, label, value }: InfoCardProps) => {
 
       <div>
         <label className="text-sm text-gray-500">{label}</label>
-        <p>{value}</p>
+        <p>{value || "Não informado"}</p>
       </div>
 
       {label === "Localização" && (

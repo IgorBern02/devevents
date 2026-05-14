@@ -46,7 +46,7 @@ export const EventInfoSection = ({ event }: Props) => {
       <InfoCard
         icon={<IoLocationSharp />}
         label="Localização"
-        value={event.location}
+        value={event.location || ""}
       />
     </div>
   );

@@ -12,6 +12,7 @@ import { FormTextarea } from "../components/forms/FormTextarea";
 import { SubmitEventHeader } from "../components/forms/SubmitEventHeader";
 
 import { useGoBack } from "../hooks/useGoBack";
+import { Button } from "../components/ui/Button";
 
 export const SubmitEvent = () => {
   const {
@@ -30,6 +31,8 @@ export const SubmitEvent = () => {
       await api.post("/events", data);
 
       alert("Evento enviado com sucesso!");
+
+      goBack("/");
 
       reset();
     } catch (error) {
@@ -71,14 +74,14 @@ export const SubmitEvent = () => {
             label="Responsável pelo Evento"
             placeholder="Ex: Tech Events"
             register={register("responsible")}
-            error={errors.title}
+            error={errors.responsible}
           />
 
-          <FormInput
+          {/* <FormInput
             label="Imagem do evento"
             type="file"
             register={register("image")}
-          />
+          /> */}
 
           <FormTextarea
             label="Descrição"
@@ -88,42 +91,57 @@ export const SubmitEvent = () => {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FormInput label="Data" type="date" register={register("date")} />
+            <FormInput
+              label="Data"
+              type="date"
+              register={register("date")}
+              error={errors.date}
+            />
 
-            <FormInput label="Hora" type="time" register={register("hour")} />
+            <FormInput
+              label="Hora"
+              type="time"
+              register={register("hour")}
+              error={errors.hour}
+            />
 
             <FormInput
               label="Dia da Semana"
               placeholder="Ex: Sábado"
               register={register("day")}
+              error={errors.day}
             />
 
             <FormInput
               label="Tipo do Evento"
               placeholder="Ex: Online / Presencial"
               register={register("type")}
+              error={errors.type}
             />
 
             <FormInput
               label="Cidade"
               placeholder="Ex: São Paulo"
               register={register("city")}
+              error={errors.city}
             />
 
             <FormInput
               label="Localização"
               placeholder="Ex: Expo Center Norte"
               register={register("location")}
+              error={errors.location}
             />
 
             <FormInput
               label="Link do Evento"
               placeholder="Ex: www://techevents.com.br"
               register={register("link")}
+              error={errors.link}
             />
           </div>
 
-          <button
+          <Button
             type="submit"
             disabled={isSubmitting}
             className="
@@ -143,7 +161,7 @@ export const SubmitEvent = () => {
             "
           >
             {isSubmitting ? "Enviando evento..." : "Publicar Evento"}
-          </button>
+          </Button>
         </form>
       </div>
     </div>

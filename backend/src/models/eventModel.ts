@@ -1,18 +1,23 @@
 import mongoose from "mongoose";
 
+const capitalizeWords = (value: string) => {
+  if (!value) return value;
+
+  return value.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase());
+};
+
 const eventSchema = new mongoose.Schema(
   {
-    title: { type: String, required: true },
-    responsible: { type: String, required: true },
-    image: { type: String, default: "" },
+    title: { type: String, required: true, set: capitalizeWords },
+    responsible: { type: String, required: true, set: capitalizeWords },
     description: { type: String, required: true },
     date: { type: Date, required: true },
     hour: { type: String, required: true },
-    day: { type: String, required: true },
-    type: { type: String, required: true },
-    city: { type: String, required: true },
-    location: { type: String, required: true },
-    link: { type: String, default: "" },
+    day: { type: String, required: true, set: capitalizeWords },
+    type: { type: String, required: true, set: capitalizeWords },
+    city: { type: String, required: false, set: capitalizeWords },
+    location: { type: String, required: false, set: capitalizeWords },
+    link: { type: String, required: false },
     approved: { type: Boolean, default: false },
   },
   {

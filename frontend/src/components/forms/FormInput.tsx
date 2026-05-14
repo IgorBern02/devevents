@@ -15,6 +15,22 @@ export const FormInput = ({
   register,
   error,
 }: FormInputProps) => {
+  const capitalizeWords = (text: string) => {
+    const exceptions = ["de", "da", "do", "dos", "das", "e"];
+
+    return text
+      .toLowerCase()
+      .split(" ")
+      .map((word, index) => {
+        if (index !== 0 && exceptions.includes(word)) {
+          return word;
+        }
+
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      })
+      .join(" ");
+  };
+
   return (
     <div>
       <label className="block mb-2 text-sm font-medium text-(--text-color) dark:text-(--text-color-dark)">
@@ -25,6 +41,11 @@ export const FormInput = ({
         type={type}
         placeholder={placeholder}
         {...register}
+        onChange={(e) => {
+          e.target.value = capitalizeWords(e.target.value);
+
+          register.onChange(e);
+        }}
         className="
           w-full
           border border-slate-700

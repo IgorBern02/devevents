@@ -30,7 +30,6 @@ export const EventDetails = () => {
 
       <section className="w-full shadow-lg rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800">
         <div className="w-full bg-amber-200 h-96">
-          <div>{event.image}</div>
           <p>{event.responsible}</p>
         </div>
 
@@ -43,10 +42,14 @@ export const EventDetails = () => {
 
           <EventInfoSection event={event} />
 
-          <Button className="flex items-center gap-2 bg-(--primary-color) text-white px-6 py-3 rounded-lg cursor-pointer hover:bg-(--primary-color-hover) transition-colors">
-            Participar do Evento
-            <MdArrowOutward className="text-lg" />
-          </Button>
+          {event.link && (
+            <Button className="flex items-center gap-2 bg-(--primary-color) text-white px-6 py-3 rounded-lg cursor-pointer hover:bg-(--primary-color-hover) transition-colors">
+              <a href={event.link} target="_blank" rel="noopener noreferrer">
+                Participar do Evento
+              </a>
+              <MdArrowOutward className="text-lg" />
+            </Button>
+          )}
 
           <hr />
 

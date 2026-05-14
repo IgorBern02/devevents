@@ -38,6 +38,10 @@ export const AdminEventDetails = () => {
         <h1 className="text-4xl font-bold">{event.title}</h1>
 
         <p className="mt-6 text-gray-500 whitespace-pre-line">
+          {event.responsible}
+        </p>
+
+        <p className="mt-6 text-gray-500 whitespace-pre-line">
           {event.description}
         </p>
 
@@ -47,7 +51,7 @@ export const AdminEventDetails = () => {
           </p>
 
           <p>
-            <strong>Cidade:</strong> {event.city}
+            <strong>Cidade:</strong> {event.city || "Evento Online"}
           </p>
 
           <p>
@@ -58,15 +62,27 @@ export const AdminEventDetails = () => {
             <strong>Hora:</strong> {event.hour}
           </p>
 
-          <p>
-            <strong>Local:</strong> {event.location}
-          </p>
+          {event.type === "Presencial" && (
+            <>
+              <p>
+                <strong>Cidade:</strong> {event.city}
+              </p>
+
+              <p>
+                <strong>Local:</strong> {event.location}
+              </p>
+            </>
+          )}
         </div>
 
         <div className="mt-10 flex gap-4">
           <Button
             onClick={async () => {
               await approveEvent(id!);
+
+              goBack("/");
+
+              alert("Evento aprovado");
             }}
             className="bg-green-600 hover:bg-green-700 duration-200 ease-in-out text-white px-4 py-2 rounded-lg cursor-pointer"
           >
@@ -76,6 +92,8 @@ export const AdminEventDetails = () => {
           <Button
             onClick={async () => {
               await deleteEvent(id!);
+
+              alert("Evento Excluido");
             }}
             className="bg-red-600 hover:bg-red-700 duration-200 ease-in-out text-white px-4 py-2 rounded-lg cursor-pointer"
           >

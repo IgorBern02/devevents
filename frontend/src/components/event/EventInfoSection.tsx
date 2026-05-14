@@ -7,6 +7,8 @@ import {
 import { InfoCard } from "../ui//events/InfoCard";
 import type { TechEvent } from "../../types/TechEvent";
 
+import { formatDate } from "../../utils/formatDate";
+
 interface Props {
   event: TechEvent;
 }
@@ -16,7 +18,7 @@ export const EventInfoSection = ({ event }: Props) => {
     {
       icon: <BsCalendarDate />,
       label: "Data",
-      value: event.date,
+      value: formatDate(event.date),
     },
     {
       icon: <FaRegClock />,
@@ -31,7 +33,7 @@ export const EventInfoSection = ({ event }: Props) => {
     {
       icon: <IoLocationSharp />,
       label: "Cidade",
-      value: event.city,
+      value: event.city || "Evento Online",
     },
   ];
 
@@ -43,11 +45,13 @@ export const EventInfoSection = ({ event }: Props) => {
         ))}
       </div>
 
-      <InfoCard
-        icon={<IoLocationSharp />}
-        label="Localização"
-        value={event.location || ""}
-      />
+      {event.type === "Presencial" && (
+        <InfoCard
+          icon={<IoLocationSharp />}
+          label="Localização"
+          value={event.location || ""}
+        />
+      )}
     </div>
   );
 };

@@ -69,12 +69,16 @@ export const SubmitEvent = () => {
 
           <FormInput
             label="Responsável pelo Evento"
-            placeholder="Ex: TLL Tecnologias"
+            placeholder="Ex: Tech Events"
             register={register("responsible")}
             error={errors.title}
           />
 
-          <FormInput label="image" type="image" register={register("image")} />
+          <FormInput
+            label="Imagem do evento"
+            type="file"
+            register={register("image")}
+          />
 
           <FormTextarea
             label="Descrição"
@@ -110,6 +114,12 @@ export const SubmitEvent = () => {
               label="Localização"
               placeholder="Ex: Expo Center Norte"
               register={register("location")}
+            />
+
+            <FormInput
+              label="Link do Evento"
+              placeholder="Ex: www://techevents.com.br"
+              register={register("link")}
             />
           </div>
 

@@ -29,7 +29,10 @@ export const EventDetails = () => {
       </section>
 
       <section className="w-full shadow-lg rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800">
-        <div className="w-full bg-amber-200 h-96"></div>
+        <div className="w-full bg-amber-200 h-96">
+          <div>{event.image}</div>
+          <p>{event.responsible}</p>
+        </div>
 
         <div className="p-4 space-y-4">
           <h1 className="text-2xl font-bold">{event.title}</h1>

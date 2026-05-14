@@ -4,6 +4,7 @@ const eventSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
     responsible: { type: String, required: true },
+    image: { type: String, default: "" },
     description: { type: String, required: true },
     date: { type: Date, required: true },
     hour: { type: String, required: true },
@@ -11,7 +12,7 @@ const eventSchema = new mongoose.Schema(
     type: { type: String, required: true },
     city: { type: String, required: true },
     location: { type: String, required: true },
-    image: { type: String, default: "" },
+    link: { type: String, default: "" },
     approved: { type: Boolean, default: false },
   },
   {

@@ -20,6 +20,8 @@ export const eventSchema = z.object({
   city: z.string(),
 
   location: z.string(),
+
+  link: z.string(),
 });
 
 export type EventFormData = z.infer<typeof eventSchema>;

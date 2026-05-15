@@ -9,6 +9,7 @@ import {
   updateEvent,
   deleteEvent,
 } from "../controllers/eventController";
+import { upload } from "../middlewares/upload";
 
 const router = Router();
 
@@ -18,7 +19,7 @@ router.get("/pending/all", getPendingEvents);
 
 router.get("/:id", getEventById);
 
-router.post("/", createEvent);
+router.post("/", upload.single("image"), createEvent);
 
 router.patch("/:id/approve", approveEvent);
 

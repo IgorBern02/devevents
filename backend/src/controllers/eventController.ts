@@ -76,6 +76,9 @@ export const createEvent = async (req: Request, res: Response) => {
       location,
       link,
     } = req.body;
+
+    const image = req.file?.path;
+
     const event = new Event({
       title,
       responsible,
@@ -87,6 +90,7 @@ export const createEvent = async (req: Request, res: Response) => {
       city,
       location,
       link,
+      image,
     });
     await event.save();
     res.status(201).json(event);

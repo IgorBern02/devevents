@@ -35,6 +35,19 @@ export const AdminEventDetails = () => {
         />
       </section>
       <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-sm">
+        <div className="w-full  h-96 ">
+          <img
+            src={event.image}
+            alt={event.title}
+            className="
+            
+    w-full
+    h-full
+    object-cover
+    rounded-t-xl
+  "
+          />
+        </div>
         <h1 className="text-4xl font-bold">{event.title}</h1>
 
         <p className="mt-6 text-gray-500 whitespace-pre-line">

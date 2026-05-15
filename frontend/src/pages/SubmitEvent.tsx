@@ -3,8 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { eventSchema, type EventFormData } from "../schemas/eventSchema";
 
-import { api } from "../services/api";
-
 import { BackButton } from "../components/ui/BackButton";
 
 import { FormInput } from "../components/forms/FormInput";
@@ -16,6 +14,9 @@ import { Button } from "../components/ui/Button";
 
 import { useState } from "react";
 import { ImageUpload } from "../components/forms/ImageUpload";
+
+import { createEventFormData } from "../utils/createEventFormData";
+import { eventsService } from "../services/eventsService";
 
 export const SubmitEvent = () => {
   const {
@@ -35,33 +36,9 @@ export const SubmitEvent = () => {
 
   const onSubmit = async (data: EventFormData) => {
     try {
-      const formData = new FormData();
+      const formData = createEventFormData(data, imageFile);
 
-      formData.append("title", data.title);
-
-      formData.append("responsible", data.responsible);
-
-      formData.append("description", data.description);
-
-      formData.append("date", data.date);
-
-      formData.append("hour", data.hour);
-
-      formData.append("day", data.day);
-
-      formData.append("type", data.type);
-
-      formData.append("city", data.city || "");
-
-      formData.append("location", data.location || "");
-
-      formData.append("link", data.link || "");
-
-      if (imageFile) {
-        formData.append("image", imageFile);
-      }
-
-      await api.post("/events", formData);
+      await eventsService.createEvent(formData);
 
       alert("Evento enviado com sucesso!");
 

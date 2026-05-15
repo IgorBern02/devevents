@@ -31,7 +31,7 @@ export const eventsService = {
     return response.data;
   },
 
-  async createEvent(data: unknown) {
+  async createEvent(data: FormData) {
     const response = await api.post("/events", data);
 
     return response.data;

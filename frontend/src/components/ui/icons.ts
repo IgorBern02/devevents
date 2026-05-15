@@ -1,4 +1,4 @@
-import { CiSearch, CiHashtag, CiShare2 } from "react-icons/ci";
+import { CiSearch, CiHashtag, CiShare2, CiCamera } from "react-icons/ci";
 import {
   FaRegClock,
   FaWhatsapp,
@@ -23,6 +23,7 @@ export {
   CiSearch,
   CiHashtag,
   CiShare2,
+  CiCamera,
   FaRegClock,
   FaWhatsapp,
   FaInstagram,

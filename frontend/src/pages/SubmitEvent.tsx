@@ -14,6 +14,9 @@ import { SubmitEventHeader } from "../components/forms/SubmitEventHeader";
 import { useGoBack } from "../hooks/useGoBack";
 import { Button } from "../components/ui/Button";
 
+import { useState } from "react";
+import { ImageUpload } from "../components/forms/ImageUpload";
+
 export const SubmitEvent = () => {
   const {
     register,
@@ -24,11 +27,41 @@ export const SubmitEvent = () => {
     resolver: zodResolver(eventSchema),
   });
 
+  const [imageFile, setImageFile] = useState<File | null>(null);
+
+  const [preview, setPreview] = useState<string | null>(null);
+
   const { goBack } = useGoBack();
 
   const onSubmit = async (data: EventFormData) => {
     try {
-      await api.post("/events", data);
+      const formData = new FormData();
+
+      formData.append("title", data.title);
+
+      formData.append("responsible", data.responsible);
+
+      formData.append("description", data.description);
+
+      formData.append("date", data.date);
+
+      formData.append("hour", data.hour);
+
+      formData.append("day", data.day);
+
+      formData.append("type", data.type);
+
+      formData.append("city", data.city || "");
+
+      formData.append("location", data.location || "");
+
+      formData.append("link", data.link || "");
+
+      if (imageFile) {
+        formData.append("image", imageFile);
+      }
+
+      await api.post("/events", formData);
 
       alert("Evento enviado com sucesso!");
 
@@ -77,11 +110,11 @@ export const SubmitEvent = () => {
             error={errors.responsible}
           />
 
-          {/* <FormInput
-            label="Imagem do evento"
-            type="file"
-            register={register("image")}
-          /> */}
+          <ImageUpload
+            preview={preview}
+            setPreview={setPreview}
+            setImageFile={setImageFile}
+          />
 
           <FormTextarea
             label="Descrição"

@@ -2,6 +2,7 @@ export interface TechEvent {
   _id: string;
   title: string;
   responsible: string;
+  image: string;
   description: string;
   date: string;
   hour: string;

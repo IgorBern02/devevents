@@ -14,13 +14,21 @@ export const Card = ({ event }: CardProps) => {
   return (
     <Link to={`/events/${event._id}`} className="w-full ">
       <li
-        className="w-full bg-white dark:bg-slate-900 
+        className="relative w-full min-h-100 bg-white dark:bg-slate-900 
       border border-gray-200 dark:border-slate-700 
       rounded-2xl overflow-hidden
       transition-all duration-300 
       hover:-translate-y-1 hover:shadow-xl cursor-pointer"
       >
-        <div className="w-full h-40 bg-linear-to-br from-purple-500 to-indigo-500" />
+        <div className="w-full h-40 ">
+          {event.image ? (
+            <img
+              src={event.image}
+              alt={event.title}
+              className="w-full h-full object-cover"
+            />
+          ) : null}
+        </div>
 
         <div className="p-4 space-y-2 text-gray-500">
           <h3 className="text-lg font-semibold text-(--text-color) dark:text-(--text-color-dark)">
@@ -57,7 +65,7 @@ export const Card = ({ event }: CardProps) => {
             </p>
           )}
 
-          <Button className="w-3/5 text-white border border-gray-200 dark:border-gray-800 rounded px-1 py-2 text-xs mt-2 cursor-pointer bg-(--primary-color) hover:*:(--primary-color-hover) transition-colors">
+          <Button className="absolute bottom-4 w-3/5 text-white border border-gray-200 dark:border-gray-800 rounded px-1 py-2 text-xs mt-2 cursor-pointer bg-(--primary-color) hover:*:(--primary-color-hover) transition-colors">
             Saber mais sobre o evento
           </Button>
         </div>

@@ -1,9 +1,11 @@
-import { AiOutlineHome } from "react-icons/ai";
-import { AiOutlineCalendar } from "react-icons/ai";
-import { AiOutlineTeam } from "react-icons/ai";
-import { AiOutlineMail } from "react-icons/ai";
+import {
+  AiOutlineHome,
+  AiOutlineCalendar,
+  AiOutlineTeam,
+  AiOutlineMail,
+} from "react-icons/ai";
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const navHeaderItems = [
   {
@@ -38,13 +40,22 @@ export const NavHeader = () => {
     <ul className="flex items-center justify-center gap-10">
       {navHeaderItems.map((item) => (
         <li key={item.name}>
-          <Link
+          <NavLink
             to={item.link}
-            className="flex items-center gap-2 rounded-lg px-2 py-1 text-gray-500  hover:text-(--primary-color)  hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 ease-in-out "
+            end={item.link === "/"}
+            className={({ isActive }) =>
+              `flex items-center gap-2 rounded-lg px-2 py-1 transition-all duration-300 ease-in-out
+              
+              ${
+                isActive
+                  ? "bg-gray-100 text-(--primary-color) dark:bg-gray-800"
+                  : "text-gray-500 hover:text-(--primary-color) hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`
+            }
           >
             {item.icon}
             <p>{item.name}</p>
-          </Link>
+          </NavLink>
         </li>
       ))}
     </ul>

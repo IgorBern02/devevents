@@ -8,7 +8,7 @@ export interface TechEvent {
   hour: string;
   day: string;
   type: string;
-  city?: string;
+  city: string;
   location?: string;
   link?: string;
 }

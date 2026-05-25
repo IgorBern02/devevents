@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { FiChevronDown } from "./icons";
 
 interface DropdownProps {
@@ -15,9 +15,26 @@ export const Dropdown = ({
   onChange,
 }: DropdownProps) => {
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
+
   const ref = useRef<HTMLDivElement>(null);
 
-  // 👉 fechar ao clicar fora
+  // remover acentuação
+  const normalizeText = (text: string) => {
+    return text
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+  };
+
+  // filtrar opções
+  const filteredOptions = useMemo(() => {
+    return options.filter((option) =>
+      normalizeText(option).includes(normalizeText(search)),
+    );
+  }, [options, search]);
+
+  // fechar ao clicar fora
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
@@ -26,12 +43,12 @@ export const Dropdown = ({
     };
 
     document.addEventListener("mousedown", handleClickOutside);
+
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
     <div ref={ref} className="relative">
-      {/* Botão */}
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
@@ -43,7 +60,6 @@ export const Dropdown = ({
         transition-all
         hover:border-(--primary-color)"
       >
-        {/* 👉 exibição correta */}
         {value === "" ? label : value}
 
         <FiChevronDown
@@ -53,21 +69,26 @@ export const Dropdown = ({
         />
       </button>
 
-      {/* Dropdown */}
       <div
-        className={`absolute mt-2 min-w-45 bg-white dark:bg-slate-900 
-  border border-gray-200 dark:border-slate-700 
-  rounded-xl shadow-xl z-50
-  transition-all duration-200 origin-top
-  max-h-60 overflow-y-auto scroll-smooth
-  ${open ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}`}
+        className={`absolute mt-2 min-w-52 bg-white dark:bg-slate-900 
+        border border-gray-200 dark:border-slate-700 
+        rounded-xl shadow-xl z-50
+        transition-all duration-200 origin-top
+        max-h-60 overflow-y-auto scroll-smooth
+        ${
+          open
+            ? "opacity-100 scale-100"
+            : "opacity-0 scale-95 pointer-events-none"
+        }`}
       >
-        {options.map((option) => (
+        {/* opções */}
+        {filteredOptions.map((option) => (
           <div
             key={option || "all"}
             onClick={() => {
               onChange(option);
               setOpen(false);
+              setSearch("");
             }}
             className={`px-4 py-3 text-sm font-medium
             cursor-pointer transition-colors 
@@ -80,6 +101,12 @@ export const Dropdown = ({
             {option === "" ? "Todos" : option}
           </div>
         ))}
+
+        {filteredOptions.length === 0 && (
+          <div className="px-4 py-3 text-sm text-gray-500">
+            Nenhum resultado encontrado
+          </div>
+        )}
       </div>
     </div>
   );

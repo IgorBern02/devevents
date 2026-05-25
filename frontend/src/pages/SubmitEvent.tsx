@@ -18,6 +18,8 @@ import { ImageUpload } from "../components/forms/ImageUpload";
 import { createEventFormData } from "../utils/createEventFormData";
 import { eventsService } from "../services/eventsService";
 
+import { toast } from "sonner";
+
 export const SubmitEvent = () => {
   const {
     register,
@@ -40,7 +42,7 @@ export const SubmitEvent = () => {
 
       await eventsService.createEvent(formData);
 
-      alert("Evento enviado com sucesso!");
+      toast.success("Evento enviado com sucesso!");
 
       goBack("/");
 
@@ -48,7 +50,7 @@ export const SubmitEvent = () => {
     } catch (error) {
       console.log(error);
 
-      alert("Erro ao enviar evento");
+      toast.error("Erro ao enviar evento");
     }
   };
 

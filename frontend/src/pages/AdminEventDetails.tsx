@@ -9,6 +9,8 @@ import { useEvent } from "../hooks/useEvent";
 
 import { formatDate } from "../utils/formatDate";
 
+import { toast } from "sonner";
+
 export const AdminEventDetails = () => {
   const { event, loading } = useEvent();
 
@@ -95,7 +97,7 @@ export const AdminEventDetails = () => {
 
               goBack("/");
 
-              alert("Evento aprovado");
+              toast.success("Evento aprovado");
             }}
             className="bg-green-600 hover:bg-green-700 duration-200 ease-in-out text-white px-4 py-2 rounded-lg cursor-pointer"
           >
@@ -106,7 +108,7 @@ export const AdminEventDetails = () => {
             onClick={async () => {
               await deleteEvent(id!);
 
-              alert("Evento Excluido");
+              toast.success("Evento excluído");
             }}
             className="bg-red-600 hover:bg-red-700 duration-200 ease-in-out text-white px-4 py-2 rounded-lg cursor-pointer"
           >

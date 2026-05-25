@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../ui/Button";
 import { NavHeader } from "./NavHeader";
 
-import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
+import { IoMoonOutline, IoSunnyOutline } from "../ui/icons";
 
 export const Header = () => {
   const [theme, setTheme] = useState(() => {

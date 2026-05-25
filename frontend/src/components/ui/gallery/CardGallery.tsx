@@ -1,5 +1,4 @@
-import { AiOutlineTeam } from "react-icons/ai";
-import { BsCalendarDate } from "react-icons/bs";
+import { AiOutlineTeam, BsCalendarDate } from "../icons";
 
 export const CardGallery = () => {
   return (

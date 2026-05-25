@@ -10,14 +10,26 @@ import {
   FaLightbulb,
   FaChartLine,
   FaHandshake,
+  FaGithub,
 } from "react-icons/fa";
 import { FaXTwitter, FaBook } from "react-icons/fa6";
 import { BsCalendarDate } from "react-icons/bs";
 import { HiOutlineDesktopComputer } from "react-icons/hi";
 import { MdDateRange, MdArrowOutward } from "react-icons/md";
 import { FiChevronLeft, FiChevronDown } from "react-icons/fi";
-import { IoLocationSharp, IoCodeSlashOutline } from "react-icons/io5";
+import {
+  IoLocationSharp,
+  IoCodeSlashOutline,
+  IoMoonOutline,
+  IoSunnyOutline,
+} from "react-icons/io5";
 import { PiBracketsCurlyLight } from "react-icons/pi";
+import {
+  AiOutlineHome,
+  AiOutlineCalendar,
+  AiOutlineTeam,
+  AiOutlineMail,
+} from "react-icons/ai";
 
 export {
   CiSearch,
@@ -34,6 +46,7 @@ export {
   FaLightbulb,
   FaChartLine,
   FaHandshake,
+  FaGithub,
   FaXTwitter,
   FaBook,
   BsCalendarDate,
@@ -44,5 +57,11 @@ export {
   FiChevronDown,
   IoLocationSharp,
   IoCodeSlashOutline,
+  IoMoonOutline,
+  IoSunnyOutline,
   PiBracketsCurlyLight,
+  AiOutlineHome,
+  AiOutlineCalendar,
+  AiOutlineTeam,
+  AiOutlineMail,
 };

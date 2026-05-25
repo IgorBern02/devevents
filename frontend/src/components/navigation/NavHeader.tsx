@@ -3,7 +3,7 @@ import {
   AiOutlineCalendar,
   AiOutlineTeam,
   AiOutlineMail,
-} from "react-icons/ai";
+} from "../ui/icons";
 
 import { NavLink } from "react-router-dom";
 

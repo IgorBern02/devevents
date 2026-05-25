@@ -19,6 +19,7 @@ import { createEventFormData } from "../utils/createEventFormData";
 import { eventsService } from "../services/eventsService";
 
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 export const SubmitEvent = () => {
   const {
@@ -172,7 +173,14 @@ export const SubmitEvent = () => {
               cursor-pointer
             "
           >
-            {isSubmitting ? "Enviando evento..." : "Publicar Evento"}
+            {isSubmitting ? (
+              <span>
+                <Loader2 className="animate-spin h-5 w-5 mx-auto" />
+                Enviando evento...
+              </span>
+            ) : (
+              "Publicar Evento"
+            )}
           </Button>
         </form>
       </div>

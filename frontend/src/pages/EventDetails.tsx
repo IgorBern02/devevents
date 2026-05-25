@@ -5,6 +5,7 @@ import { Button } from "../components/ui/Button";
 import { MdArrowOutward } from "../components/ui/icons";
 import { useEvent } from "../hooks/useEvent";
 import { useGoBack } from "../hooks/useGoBack";
+import { EventDetailsSkeleton } from "../components/skeletons/events/EventDetailsSkeleton";
 
 export const EventDetails = () => {
   const { event, loading } = useEvent();
@@ -12,11 +13,19 @@ export const EventDetails = () => {
   const { goBack } = useGoBack();
 
   if (loading) {
-    return <div>Carregando...</div>;
+    return <EventDetailsSkeleton />;
   }
 
   if (!event) {
-    return <div>Carregando...</div>;
+    return (
+      <div className="mt-20 text-center">
+        <p className="text-lg text-gray-500">Evento não encontrado.</p>
+        <BackButton
+          text="Voltar para os Eventos"
+          onClick={() => goBack("/events")}
+        />
+      </div>
+    );
   }
 
   return (

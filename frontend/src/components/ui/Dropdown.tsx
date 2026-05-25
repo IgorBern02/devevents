@@ -39,6 +39,7 @@ export const Dropdown = ({
         bg-white dark:bg-slate-900
         border border-gray-200 dark:border-slate-700
         rounded-xl text-sm
+        cursor-pointer
         transition-all
         hover:border-(--primary-color)"
       >

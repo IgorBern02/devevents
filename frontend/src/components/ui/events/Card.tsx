@@ -50,10 +50,12 @@ export const Card = ({ event }: CardProps) => {
             {event.type}
           </p>
 
-          <p className="text-sm flex items-center gap-1">
-            <IoLocationSharp className="text-(--text-color) dark:text-(--text-color-dark)" />
-            {event.city}
-          </p>
+          {event.city && (
+            <p className="text-sm flex items-center gap-1">
+              <IoLocationSharp className="text-(--text-color) dark:text-(--text-color-dark)" />
+              {event.city}
+            </p>
+          )}
 
           <Button className="w-3/5 text-white border border-gray-200 dark:border-gray-800 rounded px-1 py-2 text-xs mt-2 cursor-pointer bg-(--primary-color) hover:*:(--primary-color-hover) transition-colors">
             Saber mais sobre o evento

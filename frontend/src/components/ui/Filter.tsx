@@ -61,6 +61,7 @@ export const Filter = ({
         className={`flex items-center 
       bg-white dark:bg-slate-900 
       border border-gray-200 dark:border-slate-700
+      hover:border-(--primary-color)
       rounded-xl h-11 px-3
       transition-all duration-300
       ${open ? "w-56" : "w-11 cursor-pointer"}`}
@@ -74,7 +75,7 @@ export const Filter = ({
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Buscar..."
           className={`bg-transparent outline-none text-sm ml-2 w-full
-        transition-opacity duration-200
+        transition-opacity duration-200 
         ${open ? "opacity-100" : "opacity-0 pointer-events-none"}`}
         />
       </div>
@@ -82,7 +83,7 @@ export const Filter = ({
       <Dropdown
         label="Tipo"
         value={type}
-        options={["", "Online", "Presencial", "Híbrido"]}
+        options={["", "Online", "Presencial"]}
         onChange={setType}
       />
 

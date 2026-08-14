@@ -11,6 +11,7 @@ const eventSchema = new mongoose.Schema(
     title: { type: String, required: true, set: capitalizeWords },
     responsible: { type: String, required: true, set: capitalizeWords },
     image: { type: String, default: "" },
+    images: { type: [String], default: [] },
     description: { type: String, required: true },
     date: { type: Date, required: true },
     hour: { type: String, required: true },

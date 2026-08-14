@@ -19,7 +19,14 @@ router.get("/pending/all", getPendingEvents);
 
 router.get("/:id", getEventById);
 
-router.post("/", upload.single("image"), createEvent);
+router.post(
+  "/",
+  upload.fields([
+    { name: "image", maxCount: 1 },
+    { name: "images", maxCount: 5 },
+  ]),
+  createEvent,
+);
 
 router.patch("/:id/approve", approveEvent);
 

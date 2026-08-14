@@ -63,6 +63,9 @@ export const approveEvent = async (req: Request, res: Response) => {
 };
 
 export const createEvent = async (req: Request, res: Response) => {
+  console.log("BODY:", req.body);
+  console.log("FILES:", req.files);
+
   try {
     const {
       title,
@@ -77,7 +80,14 @@ export const createEvent = async (req: Request, res: Response) => {
       link,
     } = req.body;
 
-    const image = req.file?.path;
+    const files = req.files as {
+      image?: Express.Multer.File[];
+      images?: Express.Multer.File[];
+    };
+
+    const image = files.image?.[0]?.path || "";
+
+    const images = files.images?.map((file) => file.path) || [];
 
     const event = new Event({
       title,
@@ -91,11 +101,19 @@ export const createEvent = async (req: Request, res: Response) => {
       location,
       link,
       image,
+      images,
     });
+
     await event.save();
+
     res.status(201).json(event);
   } catch (error) {
-    res.status(400).json({ message: "Error creating event", error });
+    console.error(error);
+
+    res.status(400).json({
+      message: "Error creating event",
+      error,
+    });
   }
 };
 

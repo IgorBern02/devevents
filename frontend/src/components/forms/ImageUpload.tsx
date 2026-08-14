@@ -1,4 +1,5 @@
-import { CiCamera } from "react-icons/ci";
+import type { Dispatch, SetStateAction } from "react";
+import { CiCamera, CiTrash } from "../ui/icons";
 
 interface Props {
   preview: string | null;
@@ -6,8 +7,9 @@ interface Props {
   setImageFile: (file: File | null) => void;
 
   previews: string[];
-  setPreviews: (previews: string[]) => void;
-  setImageFiles: (files: File[]) => void;
+  setPreviews: Dispatch<SetStateAction<string[]>>;
+
+  setImageFiles: Dispatch<SetStateAction<File[]>>;
 }
 
 export const ImageUpload = ({
@@ -25,16 +27,34 @@ export const ImageUpload = ({
     setPreview(URL.createObjectURL(file));
   };
 
+  const MAX_GALLERY_IMAGES = 10;
+
   const handleGalleryChange = (files: FileList | null) => {
     if (!files) return;
 
     const selectedFiles = Array.from(files);
 
-    setImageFiles(selectedFiles);
+    setImageFiles((prevFiles) => {
+      const remainingSlots = MAX_GALLERY_IMAGES - prevFiles.length;
+
+      return [...prevFiles, ...selectedFiles.slice(0, remainingSlots)];
+    });
 
     const previewUrls = selectedFiles.map((file) => URL.createObjectURL(file));
 
-    setPreviews(previewUrls);
+    setPreviews((prevPreviews) => {
+      const remainingSlots = MAX_GALLERY_IMAGES - prevPreviews.length;
+
+      return [...prevPreviews, ...previewUrls.slice(0, remainingSlots)];
+    });
+  };
+
+  const handleRemoveImage = (index: number) => {
+    URL.revokeObjectURL(previews[index]);
+
+    setPreviews((prev) => prev.filter((_, i) => i !== index));
+
+    setImageFiles((prev) => prev.filter((_, i) => i !== index));
   };
 
   return (
@@ -146,15 +166,33 @@ export const ImageUpload = ({
           </p>
         </label>
 
+        <p className="text-sm text-gray-500 mt-2">
+          {previews.length}/{MAX_GALLERY_IMAGES} fotos selecionadas
+        </p>
+
+        {previews.length >= MAX_GALLERY_IMAGES && (
+          <p className="text-sm text-red-500">
+            Limite de {MAX_GALLERY_IMAGES} fotos atingido.
+          </p>
+        )}
+
         {previews.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 ">
             {previews.map((image, index) => (
-              <img
-                key={image}
-                src={image}
-                alt={`Foto ${index + 1}`}
-                className="w-full h-32 object-cover rounded-xl"
-              />
+              <div key={`${image}-${index}`} className="relative">
+                <img
+                  src={image}
+                  alt={`Foto ${index + 1}`}
+                  className="w-full h-32 object-cover rounded-xl"
+                />
+                <button
+                  type="button"
+                  onClick={() => handleRemoveImage(index)}
+                  className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full hover:bg-red-600 cursor-pointer"
+                >
+                  <CiTrash />
+                </button>
+              </div>
             ))}
           </div>
         )}

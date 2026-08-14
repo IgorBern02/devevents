@@ -63,9 +63,6 @@ export const approveEvent = async (req: Request, res: Response) => {
 };
 
 export const createEvent = async (req: Request, res: Response) => {
-  console.log("BODY:", req.body);
-  console.log("FILES:", req.files);
-
   try {
     const {
       title,

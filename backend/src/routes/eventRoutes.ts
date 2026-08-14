@@ -23,7 +23,7 @@ router.post(
   "/",
   upload.fields([
     { name: "image", maxCount: 1 },
-    { name: "images", maxCount: 5 },
+    { name: "images", maxCount: 10 },
   ]),
   createEvent,
 );

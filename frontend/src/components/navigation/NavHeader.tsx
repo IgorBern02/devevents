@@ -1,9 +1,4 @@
-import {
-  AiOutlineHome,
-  AiOutlineCalendar,
-  AiOutlineTeam,
-  AiOutlineMail,
-} from "../ui/icons";
+import { AiOutlineHome, AiOutlineCalendar, AiOutlineTeam } from "../ui/icons";
 
 import { NavLink } from "react-router-dom";
 
@@ -27,11 +22,6 @@ const navHeaderItems = [
     name: "Galeria",
     link: "/gallery",
     icon: <AiOutlineTeam />,
-  },
-  {
-    name: "Contato",
-    link: "/contact",
-    icon: <AiOutlineMail />,
   },
 ];
 

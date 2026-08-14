@@ -3,6 +3,7 @@ export interface TechEvent {
   title: string;
   responsible: string;
   image: string;
+  images: string[];
   description: string;
   date: string;
   hour: string;

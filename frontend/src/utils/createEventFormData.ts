@@ -3,24 +3,23 @@ import type { EventFormData } from "../schemas/eventSchema";
 export const createEventFormData = (
   data: EventFormData,
   imageFile: File | null,
+  imageFiles: File[],
 ) => {
   const formData = new FormData();
 
-  formData.append("title", data.title);
-  formData.append("responsible", data.responsible);
-  formData.append("description", data.description);
-  formData.append("date", data.date);
-  formData.append("hour", data.hour);
-  formData.append("day", data.day);
-  formData.append("type", data.type);
-
-  formData.append("city", data.city || "");
-  formData.append("location", data.location || "");
-  formData.append("link", data.link || "");
+  Object.entries(data).forEach(([key, value]) => {
+    if (value !== undefined && value !== null) {
+      formData.append(key, String(value));
+    }
+  });
 
   if (imageFile) {
     formData.append("image", imageFile);
   }
+
+  imageFiles.forEach((file) => {
+    formData.append("images", file);
+  });
 
   return formData;
 };

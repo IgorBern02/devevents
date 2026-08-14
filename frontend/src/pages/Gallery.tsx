@@ -1,6 +1,16 @@
 import { CardGallery } from "../components/ui/gallery/CardGallery";
+import { useEvents } from "../hooks/useEvents";
 
 export const Gallery = () => {
+  const { events, loading } = useEvents();
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        Carregando...
+      </div>
+    );
+  }
   return (
     <div className="space-y-10 flex flex-col items-center w-full px-4 max-w-6xl mx-auto mt-20">
       <section>
@@ -18,9 +28,9 @@ export const Gallery = () => {
           Fotos em destaque
         </span>
         <ul className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
-          <CardGallery />
-          <CardGallery />
-          <CardGallery />
+          {events.map((event) => (
+            <CardGallery key={event._id} event={event} />
+          ))}
         </ul>
       </section>
     </div>

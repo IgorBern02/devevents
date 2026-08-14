@@ -32,14 +32,16 @@ export const SubmitEvent = () => {
   });
 
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imageFiles, setImageFiles] = useState<File[]>([]);
 
   const [preview, setPreview] = useState<string | null>(null);
+  const [previews, setPreviews] = useState<string[]>([]);
 
   const { goBack } = useGoBack();
 
   const onSubmit = async (data: EventFormData) => {
     try {
-      const formData = createEventFormData(data, imageFile);
+      const formData = createEventFormData(data, imageFile, imageFiles);
 
       await eventsService.createEvent(formData);
 
@@ -94,6 +96,9 @@ export const SubmitEvent = () => {
             preview={preview}
             setPreview={setPreview}
             setImageFile={setImageFile}
+            previews={previews}
+            setPreviews={setPreviews}
+            setImageFiles={setImageFiles}
           />
 
           <FormTextarea

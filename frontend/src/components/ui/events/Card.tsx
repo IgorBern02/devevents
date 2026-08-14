@@ -4,11 +4,8 @@ import { BsCalendarDate } from "../icons";
 import { HiOutlineDesktopComputer } from "../icons";
 import { IoLocationSharp } from "../icons";
 import { Link } from "react-router-dom";
-import type { TechEvent } from "../../../types/TechEvent";
 import { Button } from "../Button";
-interface CardProps {
-  event: TechEvent;
-}
+import type { CardProps } from "../../../types/Card";
 
 export const Card = ({ event }: CardProps) => {
   return (

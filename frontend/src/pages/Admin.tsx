@@ -6,7 +6,7 @@ import { useGoBack } from "../hooks/useGoBack";
 import { usePendingEvents } from "../hooks/usePendingEvents";
 import { AdminSkeleton } from "../components/skeletons/admin/AdminSkeleton";
 
-export const AdminEvents = () => {
+export const Admin = () => {
   const [events, loading] = usePendingEvents();
 
   const { goBack } = useGoBack();
@@ -41,6 +41,34 @@ export const AdminEvents = () => {
             </div>
           </Link>
         ))}
+        <section className="w-full grid grid-cols-2 items-center p-2 gap-2">
+          <Link to={`/admin/events/pending`}>
+            <div
+              className="flex items-center justify-center w-full min-h-50 bg-white dark:bg-slate-900 
+      border border-gray-200 dark:border-slate-700 
+      rounded-2xl overflow-hidden
+      transition-all duration-300 
+      hover:-translate-y-1 hover:shadow-xl cursor-pointer"
+            >
+              <Button className="bg-(--primary-color) hover:bg-(--primary-color-hover) duration-200 ease-in-out text-white px-4 py-2 rounded-lg cursor-pointer">
+                Ver eventos pendentes
+              </Button>
+            </div>
+          </Link>
+          <Link to={`/admin/events/past`}>
+            <div
+              className="flex items-center justify-center w-full min-h-50 bg-white dark:bg-slate-900 
+      border border-gray-200 dark:border-slate-700 
+      rounded-2xl overflow-hidden
+      transition-all duration-300 
+      hover:-translate-y-1 hover:shadow-xl cursor-pointer"
+            >
+              <Button className="bg-(--primary-color) hover:bg-(--primary-color-hover) duration-200 ease-in-out text-white px-4 py-2 rounded-lg cursor-pointer">
+                Ver projetos passados
+              </Button>
+            </div>
+          </Link>
+        </section>
       </div>
     </div>
   );

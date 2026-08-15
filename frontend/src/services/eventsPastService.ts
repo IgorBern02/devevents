@@ -9,7 +9,7 @@ export const eventsPastService = {
 
   async createPastEvent(formData: FormData) {
     try {
-      const response = await api.post("/past-events/past", formData, {
+      const response = await api.post("/past-events", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

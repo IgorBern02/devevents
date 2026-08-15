@@ -25,14 +25,14 @@ export const eventsService = {
     return response.data;
   },
 
-  async deleteEvent(id: string) {
-    const response = await api.delete(`/events/${id}`);
+  async createEvent(data: FormData) {
+    const response = await api.post("/events", data);
 
     return response.data;
   },
 
-  async createEvent(data: FormData) {
-    const response = await api.post("/events", data);
+  async deleteEvent(id: string) {
+    const response = await api.delete(`/events/${id}`);
 
     return response.data;
   },

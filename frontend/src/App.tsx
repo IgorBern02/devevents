@@ -6,9 +6,12 @@ import { EventDetails } from "./pages/EventDetails";
 import { About } from "./pages/About";
 import { Gallery } from "./pages/Gallery";
 import { SubmitEvent } from "./pages/SubmitEvent";
-import { AdminEvents } from "./pages/AdminEvents";
+
 import { AdminEventDetails } from "./pages/AdminEventDetails";
 import { SubmitEventPast } from "./pages/SubmitEventPast";
+import { Admin } from "./pages/Admin";
+import { AdminEventsPending } from "./pages/AdminEventsPending";
+import { AdminEventsPast } from "./pages/AdminEventPast";
 
 function App() {
   return (
@@ -22,7 +25,13 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/submit-event-past" element={<SubmitEventPast />} />
         <Route path="/submit-event" element={<SubmitEvent />} />
-        <Route path="/admin/events" element={<AdminEvents />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/events/pending" element={<AdminEventsPending />} />
+        <Route
+          path="/admin/events/pending/:id"
+          element={<AdminEventDetails />}
+        />
+        <Route path="/admin/events/past" element={<AdminEventsPast />} />
         <Route path="/admin/events/:id" element={<AdminEventDetails />} />
       </Routes>
     </MainLayout>

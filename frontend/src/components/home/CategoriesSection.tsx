@@ -15,7 +15,7 @@ export const CategoriesSection = () => {
 
       <CategoryCard icon={<PiBracketsCurlyLight />} title="Workshops" />
 
-      <Link to="/admin/events">
+      <Link to="/admin">
         <Button>adm</Button>
       </Link>
     </section>

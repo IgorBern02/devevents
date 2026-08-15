@@ -3,7 +3,6 @@ import type { EventFormData } from "../schemas/eventSchema";
 export const createEventFormData = (
   data: EventFormData,
   imageFile: File | null,
-  imageFiles: File[],
 ) => {
   const formData = new FormData();
 
@@ -16,10 +15,6 @@ export const createEventFormData = (
   if (imageFile) {
     formData.append("image", imageFile);
   }
-
-  imageFiles.forEach((file) => {
-    formData.append("images", file);
-  });
 
   return formData;
 };

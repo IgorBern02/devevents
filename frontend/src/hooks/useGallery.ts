@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { GalleryPost } from "../types/GalleryPost";
-import { galleryService } from "../services/galleryService";
+import { eventsPastService } from "../services/eventsPastService";
 
 export const useGallery = () => {
   const [posts, setPosts] = useState<GalleryPost[]>([]);
@@ -9,7 +9,7 @@ export const useGallery = () => {
   useEffect(() => {
     const fetchGallery = async () => {
       try {
-        const data = await galleryService.getGalleryPosts();
+        const data = await eventsPastService.getEventPastPosts();
 
         setPosts(data);
       } catch (error) {

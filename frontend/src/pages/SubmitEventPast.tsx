@@ -1,56 +1,60 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { eventSchema, type EventFormData } from "../schemas/eventSchema";
+import {
+  eventPastSchema,
+  type EventPastFormData,
+} from "../schemas/eventPastSchema";
 
 import { BackButton } from "../components/ui/BackButton";
 
 import { FormInput } from "../components/forms/FormInput";
-import { FormTextarea } from "../components/forms/FormTextarea";
+
 import { SubmitEventHeader } from "../components/forms/SubmitEventHeader";
 
 import { useGoBack } from "../hooks/useGoBack";
 import { Button } from "../components/ui/Button";
 
 import { useState } from "react";
-import { ImageUpload } from "../components/forms/ImageUpload";
 
-import { createEventFormData } from "../utils/createEventFormData";
-import { eventsService } from "../services/eventsService";
+import { eventsPastService } from "../services/eventsPastService";
 
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import { ImageUploadEventPast } from "../components/forms/ImageUploadEventPast";
+import { createEventPastFormData } from "../utils/createEventPastFormData";
 
-export const SubmitEvent = () => {
+export const SubmitEventPast = () => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<EventFormData>({
-    resolver: zodResolver(eventSchema),
+  } = useForm<EventPastFormData>({
+    resolver: zodResolver(eventPastSchema),
   });
 
-  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imageFiles, setImageFiles] = useState<File[]>([]);
 
-  const [preview, setPreview] = useState<string | null>(null);
+  const [previews, setPreviews] = useState<string[]>([]);
 
   const { goBack } = useGoBack();
 
-  const onSubmit = async (data: EventFormData) => {
+  const onSubmit = async (data: EventPastFormData) => {
+    console.log("SUBMIT FOI CHAMADO");
+    console.log(data);
+
     try {
-      const formData = createEventFormData(data, imageFile);
+      const formData = createEventPastFormData(data, imageFiles);
 
-      await eventsService.createEvent(formData);
+      await eventsPastService.createPastEvent(formData);
 
-      toast.success("Evento enviado com sucesso!");
+      toast.success("Evento compartilhado com sucesso!");
 
       goBack("/");
-
       reset();
     } catch (error) {
       console.log(error);
-
       toast.error("Erro ao enviar evento");
     }
   };
@@ -62,7 +66,7 @@ export const SubmitEvent = () => {
           badge="Compartilhe com a comunidade"
           title="Evento"
           highlight="Tech"
-          description="Publique workshops, meetups, hackathons e conferências para que mais pessoas possam descobrir e participar."
+          description="Compartilhe um evento no qual você participou e ajude a comunidade a conhecer eventos passados e compartilhar experiências valiosas."
         />
 
         <section className="w-full p-4">
@@ -70,7 +74,9 @@ export const SubmitEvent = () => {
         </section>
 
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(onSubmit, (errors) => {
+            console.log("ERROS DO ZOD:", errors);
+          })}
           className="
             bg-white/5
             backdrop-blur-md
@@ -95,17 +101,10 @@ export const SubmitEvent = () => {
             error={errors.responsible}
           />
 
-          <ImageUpload
-            preview={preview}
-            setPreview={setPreview}
-            setImageFile={setImageFile}
-          />
-
-          <FormTextarea
-            label="Descrição"
-            placeholder="Descreva o evento..."
-            register={register("description")}
-            error={errors.description}
+          <ImageUploadEventPast
+            previews={previews}
+            setPreviews={setPreviews}
+            setImageFiles={setImageFiles}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -114,48 +113,6 @@ export const SubmitEvent = () => {
               type="date"
               register={register("date")}
               error={errors.date}
-            />
-
-            <FormInput
-              label="Hora"
-              type="time"
-              register={register("hour")}
-              error={errors.hour}
-            />
-
-            <FormInput
-              label="Dia da Semana"
-              placeholder="Ex: Sábado"
-              register={register("day")}
-              error={errors.day}
-            />
-
-            <FormInput
-              label="Tipo do Evento"
-              placeholder="Ex: Online / Presencial"
-              register={register("type")}
-              error={errors.type}
-            />
-
-            <FormInput
-              label="Cidade"
-              placeholder="Ex: São Paulo"
-              register={register("city")}
-              error={errors.city}
-            />
-
-            <FormInput
-              label="Localização"
-              placeholder="Ex: Expo Center Norte"
-              register={register("location")}
-              error={errors.location}
-            />
-
-            <FormInput
-              label="Link do Evento"
-              placeholder="Ex: www://techevents.com.br"
-              register={register("link")}
-              error={errors.link}
             />
           </div>
 
@@ -184,7 +141,7 @@ export const SubmitEvent = () => {
                 Enviando evento...
               </span>
             ) : (
-              "Publicar Evento"
+              "Compartilhar Evento"
             )}
           </Button>
         </form>

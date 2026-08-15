@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "../ui/Button";
 
-import img from "../../assets/undraw_online-meetings_zutp.svg";
+import img from "../../assets/undraw_publish-post_7g2z.svg";
 
 export const PublishEventPast = () => {
   return (
@@ -41,34 +41,15 @@ export const PublishEventPast = () => {
             Compartilhe um evento passado
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mt-6 leading-tight">
-            Publique um evento passado
-            <span className="text-purple-500"> evento tech</span>
+            Publique um evento no qual você participou e compartilhe com a
+            comunidade.
           </h2>
           <p className="text-gray-400 text-lg mt-6 leading-relaxed">
-            Ajude desenvolvedores a encontrarem meetups, workshops e
-            conferências incríveis pelo Brasil.
+            Ajude a comunidade a conhecer eventos passados e compartilhar
+            experiências valiosas.
           </p>
 
-          <div className="mt-8 space-y-4">
-            {" "}
-            <div className="flex items-center gap-3 text-gray-300">
-              {" "}
-              <div className="w-2 h-2 bg-purple-500 rounded-full" />{" "}
-              <p>Divulgação para toda comunidade</p>{" "}
-            </div>{" "}
-            <div className="flex items-center gap-3 text-gray-300">
-              {" "}
-              <div className="w-2 h-2 bg-purple-500 rounded-full" />{" "}
-              <p>Eventos presenciais e online</p>{" "}
-            </div>{" "}
-            <div className="flex items-center gap-3 text-gray-300">
-              {" "}
-              <div className="w-2 h-2 bg-purple-500 rounded-full" />{" "}
-              <p>Mais alcance para seu meetup</p>{" "}
-            </div>{" "}
-          </div>
-
-          <Link to={"/submit-event"}>
+          <Link to={"/submit-event-past"}>
             <Button
               className="
                 mt-10
@@ -88,7 +69,7 @@ export const PublishEventPast = () => {
                 cursor-pointer
               "
             >
-              Publicar Evento
+              Compartilhar Evento
             </Button>
           </Link>
         </div>

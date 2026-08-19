@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { eventsService } from "../services/eventsService";
-import type { Events } from "../types/Events";
+import type { EventsPast } from "../types/EventsPast";
 
-export const usePendingEvents = (): [Events[], boolean] => {
-  const [events, setEvents] = useState<Events[]>([]);
+export const usePendingEvents = (): [EventsPast[], boolean] => {
+  const [events, setEvents] = useState<EventsPast[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

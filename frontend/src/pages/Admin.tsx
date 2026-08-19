@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import { BackButton } from "../components/ui/BackButton";
 
 import { useGoBack } from "../hooks/useGoBack";
-import { usePendingEvents } from "../hooks/usePendingEvents";
+
 import { AdminSkeleton } from "../components/skeletons/admin/AdminSkeleton";
+import { useState } from "react";
 
 export const Admin = () => {
-  const [events, loading] = usePendingEvents();
-
+  const [isLoading] = useState(true);
   const { goBack } = useGoBack();
 
-  if (loading) {
+  if (isLoading) {
     return <AdminSkeleton />;
   }
 
@@ -26,21 +26,6 @@ export const Admin = () => {
       </section>
 
       <div className="space-y-6 p-2 w-full mt-10">
-        {events.map((event) => (
-          <Link to={`/admin/events/${event._id}`} key={event._id}>
-            <div className="group w-full p-2 rounded-xl shadow dark:shadow-white/10 cursor-pointer hover:shadow-lg transition-shadow duration-200">
-              <h2 className="text-2xl font-bold">{event.title}</h2>
-
-              <p className="mt-3 text-gray-500">{event.description}</p>
-
-              <div className="mt-4 flex gap-4">
-                <Button className="bg-(--primary-color) hover:bg-(--primary-color-hover) duration-200 ease-in-out text-white px-4 py-2 rounded-lg cursor-pointer">
-                  Ver detaques
-                </Button>
-              </div>
-            </div>
-          </Link>
-        ))}
         <section className="w-full grid grid-cols-2 items-center p-2 gap-2">
           <Link to={`/admin/events/pending`}>
             <div

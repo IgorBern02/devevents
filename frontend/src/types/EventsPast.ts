@@ -1,4 +1,4 @@
-export interface GalleryPost {
+export interface EventsPast {
   _id: string;
   title: string;
   responsible: string;

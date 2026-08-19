@@ -2,15 +2,15 @@ import { useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
-import type { GalleryPost } from "../../../types/GalleryPost";
+import type { EventsPast } from "../../../types/EventsPast";
 import { formatDate } from "../../../utils/formatDate";
 import { AiOutlineTeam, BsCalendarDate } from "../icons";
 
-interface CardGalleryProps {
-  post: GalleryPost;
+interface EventsPastProps {
+  post: EventsPast;
 }
 
-export const CardGallery = ({ post }: CardGalleryProps) => {
+export const CardGallery = ({ post }: EventsPastProps) => {
   const [open, setOpen] = useState(false);
 
   const slides = post.images.map((image) => ({

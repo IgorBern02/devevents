@@ -1,5 +1,5 @@
-import type { TechEvent } from "./TechEvent";
+import type { Events } from "./Events";
 
 export interface CardProps {
-  event: TechEvent;
+  event: Events;
 }

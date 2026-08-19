@@ -5,12 +5,12 @@ import {
   IoLocationSharp,
 } from "../ui/icons";
 import { InfoCard } from "../ui//events/InfoCard";
-import type { TechEvent } from "../../types/TechEvent";
+import type { Events } from "../../types/Events";
 
 import { formatDate } from "../../utils/formatDate";
 
 interface Props {
-  event: TechEvent;
+  event: Events;
 }
 
 export const EventInfoSection = ({ event }: Props) => {

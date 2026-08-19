@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import type { GalleryPost } from "../types/GalleryPost";
+import type { EventsPast } from "../types/EventsPast";
 import { eventsPastService } from "../services/eventsPastService";
 
 export const useGallery = () => {
-  const [posts, setPosts] = useState<GalleryPost[]>([]);
+  const [posts, setPosts] = useState<EventsPast[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

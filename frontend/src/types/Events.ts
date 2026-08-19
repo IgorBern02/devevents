@@ -1,4 +1,4 @@
-export interface TechEvent {
+export interface Events {
   _id: string;
   title: string;
   responsible: string;

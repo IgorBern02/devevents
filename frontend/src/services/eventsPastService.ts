@@ -7,6 +7,12 @@ export const eventsPastService = {
     return response.data;
   },
 
+  async getEventsPast() {
+    const response = await api.get("/events/past/all");
+
+    return response.data;
+  },
+
   async createPastEvent(formData: FormData) {
     try {
       const response = await api.post("/past-events", formData, {

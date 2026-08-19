@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import type { TechEvent } from "../types/TechEvent";
+import type { Events } from "../types/Events";
 import { eventsService } from "../services/eventsService";
 
 export const useEvents = () => {
-  const [events, setEvents] = useState<TechEvent[]>([]);
+  const [events, setEvents] = useState<Events[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

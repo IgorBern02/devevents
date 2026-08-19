@@ -11,7 +11,7 @@ import { upload } from "../middlewares/upload";
 
 const router = Router();
 
-router.get("/", getEventsPast);
+router.get("/events/past/all", getEventsPast);
 
 router.get("/:id", getEventPastById);
 

@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* :root {
+  --primary-color: #4f46e5;
+  --secondary-color: #6b7280;
+  --background-color: #ffffff;
+  --text-color: #000000;
+} */
+
+:root {
+  --primary-color: #6366f1;
+  --secondary-color: #22c55e;
+  --background-color: #ffffff;
+  --background-color-dark: #101828;
+  --text-color: #1e2939;
+  --text-color-dark: #f8fafc;
+
+  --font-inter: "Inter", sans-serif;
+  --font-oswald: "Oswald", sans-serif;
+}
+
+body {
+  margin: 0;
+  @apply bg-white text-black dark:bg-gray-900 dark:text-white;
+  font-family: var(--font-inter);
+}
